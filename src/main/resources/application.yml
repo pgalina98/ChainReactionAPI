@@ -1,0 +1,57 @@
+# Server Configuration
+server:
+  port: 8080
+
+# JWT Configuration
+# Token is valid for 1 hour, and refresh token is valid for 1 week
+jwt:
+  token-validity-seconds: 3600
+  refresh-token-validity-seconds: 604800
+  base64-secret: 137d1e254d423e51989c248afd83dd7b16539b10884780ca30184f2ef4e702590cd8af93cad5863d70210bb820479e6d2c6a97000c64ddb60e7ad9ab841aa875
+
+spring:
+  application:
+    name: Chain Reaction
+    version: 0.0.1
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/chainreactiondb
+    username: pgalina
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      show-sql: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath*:sql/schema.sql
+      data-locations: classpath*:sql/data.sql
+
+# Logging
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+      # springframework:
+        # security: DEBUG
+
+log4j:
+  appender:
+    consoleAppender:
+      org:
+        apache:
+          log4j:
+            ConsoleAppender
+
+      layout:
+        org:
+          apache:
+            log4j:
+              PatternLayout
+
+        ConversionPattern: |
+          [%t] %-5p %c %x - %m%n

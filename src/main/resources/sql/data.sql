@@ -1,0 +1,2 @@
+INSERT INTO public.user (full_name, username, email, password, is_admin) VALUES ('Patrik Galina', 'pgalina', 'pgalina@chain-reaction.com', '$2a$12$pygemk1zrkmkO7u0ylov2uUz0QtAHoqW4uRoWiXaT6pu9IaBllbgS', false);
+INSERT INTO public.user (full_name, username, email, password, is_admin) VALUES ('admin', 'admin', 'admin@chain-reaction.com', '$2a$12$HZU2IovUhhEvpP1mftH5qeAoKSQEvrqqDzBQSARdV.2I1MKX9ZJS.', true);

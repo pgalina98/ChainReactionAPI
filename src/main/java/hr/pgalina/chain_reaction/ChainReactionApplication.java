@@ -1,4 +1,4 @@
-package hr.pgalina.chainreaction;
+package hr.pgalina.chain_reaction;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
