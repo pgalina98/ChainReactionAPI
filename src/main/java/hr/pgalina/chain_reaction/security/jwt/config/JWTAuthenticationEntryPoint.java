@@ -1,6 +1,7 @@
 package hr.pgalina.chain_reaction.security.jwt.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,6 +30,7 @@ public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public JWTAuthenticationEntryPoint() {
         this.messageConverter = new StringHttpMessageConverter();
         this.mapper = new ObjectMapper();
+        this.mapper.registerModule(new JavaTimeModule());
     }
 
     @Override
