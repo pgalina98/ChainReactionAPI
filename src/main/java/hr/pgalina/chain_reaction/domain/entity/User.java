@@ -2,6 +2,7 @@ package hr.pgalina.chain_reaction.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -29,5 +30,6 @@ public class User extends BaseAuditEntity {
     private String password;
 
     @Column(name = "is_admin")
+    @ColumnDefault("false")
     private Boolean isAdmin;
 }

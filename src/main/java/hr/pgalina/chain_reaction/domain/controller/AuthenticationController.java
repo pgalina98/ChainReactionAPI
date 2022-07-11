@@ -23,7 +23,7 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity<JWTTokenDto> authenticateUser(@Valid @RequestBody LoginForm loginForm) {
-        log.info("Entered '/api/authentication'.");
+        log.info("Entered '/api/authentication' [POST].");
 
         return ResponseEntity.ok(loginService.authenticateUser(loginForm));
     }

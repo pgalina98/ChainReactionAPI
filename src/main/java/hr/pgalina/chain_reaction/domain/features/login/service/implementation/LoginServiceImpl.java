@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     @Transactional(readOnly = true)
-    public JWTTokenDto authenticateUser(LoginForm loginForm) throws AuthenticationException {
+    public JWTTokenDto authenticateUser(LoginForm loginForm) {
         log.info("Entered authenticateUser in LoginServiceImpl.");
 
         User user = userRepository
@@ -57,9 +57,9 @@ public class LoginServiceImpl implements LoginService {
         
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String autheticationToken = tokenProvider.createToken(user, authentication);
+        String token = tokenProvider.createToken(user, authentication);
         String refreshToken = tokenProvider.createRefreshToken(user, authentication);
 
-        return new JWTTokenDto(autheticationToken, refreshToken);
+        return new JWTTokenDto(token, refreshToken);
     }
 }
