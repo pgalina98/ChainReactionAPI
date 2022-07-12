@@ -29,9 +29,12 @@ public class RegisterServiceImpl implements RegisterService {
     public void createUser(RegisterForm registerForm) {
         log.info("Entered createUser in RegisterServiceImpl.");
 
-        userRepository
-            .findUserByUsername(registerForm.getUsername())
-            .orElseThrow(() -> new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.BAD_REQUEST, USER_WITH_PROVIDED_USERNAME_ALREADY_EXISTS));
+        boolean usernameAlreadyRegistered = userRepository
+            .existsByUsername(registerForm.getUsername());
+
+        if(usernameAlreadyRegistered) {
+            throw new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.BAD_REQUEST, USER_WITH_PROVIDED_USERNAME_ALREADY_EXISTS);
+        }
 
         User user = userMapper.mapFormToEntity(registerForm);
 

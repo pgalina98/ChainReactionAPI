@@ -17,8 +17,8 @@ public class User extends BaseAuditEntity {
     @Column(name = "id_user")
     private Long idUser;
 
-    @Column(name = "full_name")
-    private String fullName;
+    @Column(name = "fullname")
+    private String fullname;
 
     @Column(name = "username")
     private String username;

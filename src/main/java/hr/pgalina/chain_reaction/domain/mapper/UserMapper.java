@@ -15,7 +15,7 @@ public class UserMapper {
     public User mapFormToEntity(RegisterForm registerForm) {
         User user = new User();
 
-        user.setFullName(registerForm.getFullName());
+        user.setFullname(registerForm.getFullname());
         user.setUsername(registerForm.getUsername());
         user.setEmail(registerForm.getEmail());
         user.setPassword(passwordEncoder.encode(registerForm.getPassword()));

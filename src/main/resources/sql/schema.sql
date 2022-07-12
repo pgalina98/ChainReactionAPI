@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS public.user;
 CREATE TABLE public.user
 (
     id_user BIGSERIAL PRIMARY KEY,
-    full_name VARCHAR(255) NOT NULL,
+    fullname VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,

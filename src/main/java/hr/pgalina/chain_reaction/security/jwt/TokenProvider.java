@@ -66,7 +66,7 @@ public class TokenProvider {
         return Jwts
             .builder()
             .claim(JWT_CLAIM_ID_USER, user.getIdUser())
-            .claim(JWT_CLAIM_FULL_NAME, user.getFullName())
+            .claim(JWT_CLAIM_FULL_NAME, user.getFullname())
             .claim(JWT_CLAIM_USERNAME, user.getUsername())
             .claim(JWT_CLAIM_EMAIL_ADDRESS, user.getEmail())
             .claim(AUTHORITIES_KEY, authorities)
@@ -104,7 +104,7 @@ public class TokenProvider {
         return Jwts
             .builder()
             .claim(JWT_CLAIM_ID_USER, user.getIdUser())
-            .claim(JWT_CLAIM_FULL_NAME, user.getFullName())
+            .claim(JWT_CLAIM_FULL_NAME, user.getFullname())
             .claim(JWT_CLAIM_USERNAME, user.getUsername())
             .claim(JWT_CLAIM_EMAIL_ADDRESS, user.getEmail())
             .claim(AUTHORITIES_KEY, authorities)

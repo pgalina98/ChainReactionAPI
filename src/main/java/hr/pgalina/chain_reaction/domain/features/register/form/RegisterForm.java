@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 public class RegisterForm {
 
     @NotNull
-    private String fullName;
+    private String fullname;
 
     @NotNull
     private String username;
