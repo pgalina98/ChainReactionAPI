@@ -38,7 +38,7 @@ public class JWTUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), determineAuthority(user));
     }
 
-    private Collection<? extends GrantedAuthority> determineAuthority(User user) {
+    public Collection<? extends GrantedAuthority> determineAuthority(User user) {
         if (user.getIsAdmin()) {
             return new ArrayList<>() {{ add(new SimpleGrantedAuthority(AuthoritiesConstants.ADMIN)); }};
         } else {

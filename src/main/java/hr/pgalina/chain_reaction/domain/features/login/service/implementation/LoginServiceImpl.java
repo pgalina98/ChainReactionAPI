@@ -8,6 +8,7 @@ import hr.pgalina.chain_reaction.domain.features.login.service.LoginService;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
 import hr.pgalina.chain_reaction.security.jwt.TokenProvider;
 import hr.pgalina.chain_reaction.security.jwt.dto.JWTTokenDto;
+import hr.pgalina.chain_reaction.security.jwt.service.JWTUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,8 @@ public class LoginServiceImpl implements LoginService {
 
     private final UserRepository userRepository;
 
+    private final JWTUserDetailsService jwtUserDetailsService;
+
     private final TokenProvider tokenProvider;
 
     @Override
@@ -44,7 +47,8 @@ public class LoginServiceImpl implements LoginService {
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
             loginForm.getUsername(),
-            loginForm.getPassword()
+            loginForm.getPassword(),
+            jwtUserDetailsService.determineAuthority(user)
         );
 
         boolean isPasswordMatched = passwordEncoder.matches(loginForm.getPassword(), user.getPassword());
