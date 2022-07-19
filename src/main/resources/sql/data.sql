@@ -3,7 +3,7 @@ INSERT INTO public.user (fullname, username, email, password, is_admin) VALUES (
 
 INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4', 25, 70, 3.5, 18.9, 2990.00, 1, 3, 1);
 INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4', 25, 70, 3.5, 18.9, 2990.00, 2, 0, 1);
-INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4', 25, 70, 3.5, 18.9, 2990.00, 3, 5 1);
+INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4', 25, 70, 3.5, 18.9, 2990.00, 3, 5, 1);
 INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4ST', 20, 70, 3, 19.2, 2590.00, 1, 0, 1);
 INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4ST', 20, 70, 3, 19.2, 2590.00, 2, 3, 1);
 INSERT INTO public.product (name, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, type) VALUES ('Cowboy', '4ST', 20, 70, 3, 19.2, 2590.00, 3, 0, 1);
