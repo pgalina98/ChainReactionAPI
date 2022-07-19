@@ -22,11 +22,11 @@ public class UserController {
     private final RegisterService registerService;
 
     @PostMapping
-    public ResponseEntity createUser(@Valid @RequestBody RegisterForm registerForm) {
+    public ResponseEntity<?> createUser(@Valid @RequestBody RegisterForm registerForm) {
         log.info("Entered '/api/users' [POST].");
 
         registerService.createUser(registerForm);
 
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
