@@ -46,6 +46,9 @@ public class Product extends BaseAuditEntity {
     @Column(name = "available_quantity")
     private Integer availableQuantity;
 
+    @Column(name = "image_path")
+    private String imagePath;
+
     @Column(name = "type")
     private Short type;
 }

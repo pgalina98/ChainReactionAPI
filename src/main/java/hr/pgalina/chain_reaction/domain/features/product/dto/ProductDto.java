@@ -30,5 +30,7 @@ public class ProductDto implements Serializable {
 
     private Integer availableQuantity;
 
+    private String imagePath;
+
     private ProductTypeDto type;
 }
