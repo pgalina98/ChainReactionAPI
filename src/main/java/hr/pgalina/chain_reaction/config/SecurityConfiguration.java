@@ -24,13 +24,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     private final TokenProvider tokenProvider;
-
-    private final JWTUserDetailsService jwtUserDetailsService;
-
-    public SecurityConfiguration(JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint, TokenProvider tokenProvider, JWTUserDetailsService jwtUserDetailsService) {
+    
+    public SecurityConfiguration(JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint, TokenProvider tokenProvider) {
         this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
         this.tokenProvider = tokenProvider;
-        this.jwtUserDetailsService = jwtUserDetailsService;
     }
 
     @Bean

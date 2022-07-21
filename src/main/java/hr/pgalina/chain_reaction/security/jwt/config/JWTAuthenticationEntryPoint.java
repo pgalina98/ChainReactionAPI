@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants.ERROR;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.INVALID_USERNAME_OR_PASSWORD;
+import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.UNAUTHORIZED_REQUEST;
 
 @Component
 public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
@@ -38,7 +38,7 @@ public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
         ServerHttpResponse outputMessage = new ServletServerHttpResponse(httpServletResponse);
         outputMessage.setStatusCode(HttpStatus.UNAUTHORIZED);
 
-        BadRequestException badRequestException = new BadRequestException(ERROR, HttpStatus.UNAUTHORIZED, INVALID_USERNAME_OR_PASSWORD);
+        BadRequestException badRequestException = new BadRequestException(ERROR, HttpStatus.UNAUTHORIZED, UNAUTHORIZED_REQUEST);
 
         messageConverter.write(mapper.writeValueAsString(badRequestException), MediaType.APPLICATION_JSON, outputMessage);
     }

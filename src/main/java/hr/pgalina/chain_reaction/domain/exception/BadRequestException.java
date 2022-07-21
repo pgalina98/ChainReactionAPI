@@ -12,7 +12,7 @@ public class BadRequestException extends RuntimeException {
 
     private HttpStatus httpStatus;
 
-    private LocalDateTime timestamp;
+    private String timestamp;
 
     public BadRequestException() {}
 
@@ -24,6 +24,6 @@ public class BadRequestException extends RuntimeException {
         super(message);
         this.errorType = errorType;
         this.httpStatus = httpStatus;
-        this.timestamp = LocalDateTime.now();
+        this.timestamp = LocalDateTime.now().toString();
     }
 }
