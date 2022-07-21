@@ -1,6 +1,5 @@
 package hr.pgalina.chain_reaction.domain.features.product.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

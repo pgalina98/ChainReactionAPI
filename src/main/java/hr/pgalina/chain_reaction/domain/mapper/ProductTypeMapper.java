@@ -2,9 +2,11 @@ package hr.pgalina.chain_reaction.domain.mapper;
 
 import hr.pgalina.chain_reaction.domain.features.product.dto.ProductTypeDto;
 import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class ProductTypeMapper {
 
     public ProductTypeDto mapToDto(ProductType productType) {

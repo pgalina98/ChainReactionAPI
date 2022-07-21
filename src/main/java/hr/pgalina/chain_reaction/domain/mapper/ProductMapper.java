@@ -29,14 +29,12 @@ public class ProductMapper {
         productDto.setWeight(product.getWeight());
         productDto.setPrice(product.getPrice());
         productDto.setColor(
-            productColorMapper
-                .mapToDto(ProductColor.findByIdProductColor(product.getColor()))
+            productColorMapper.mapToDto(ProductColor.findByIdProductColor(product.getColor()))
         );
         productDto.setAvailableQuantity(product.getAvailableQuantity());
         productDto.setImagePath(product.getImagePath());
         productDto.setType(
-            productTypeMapper
-                .mapToDto(ProductType.findByIdProductType(product.getType()))
+            productTypeMapper.mapToDto(ProductType.findByIdProductType(product.getType()))
         );
 
         return productDto;

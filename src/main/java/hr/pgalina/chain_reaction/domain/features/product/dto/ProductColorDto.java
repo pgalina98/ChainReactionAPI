@@ -10,6 +10,6 @@ import java.io.Serializable;
 public class ProductColorDto implements Serializable {
 
     private Short idProductColor;
-
+    
     private String value;
 }

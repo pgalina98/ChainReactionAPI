@@ -10,7 +10,7 @@ import java.util.Arrays;
 public enum ProductColor {
 
     WHITE((short) 1, "WHITE"),
-    DARK_GRAY((short) 2, "DARK-GRAY"),
+    GRAY_DARK((short) 2, "GRAY-DARK"),
     BLACK((short) 3, "BLACK");
 
     private Short idProductColor;
