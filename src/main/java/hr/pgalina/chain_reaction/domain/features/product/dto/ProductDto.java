@@ -9,6 +9,8 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public class ProductDto implements Serializable {
 
+    private Long idProduct;
+
     private String name;
 
     private String description;

@@ -20,6 +20,7 @@ public class ProductMapper {
     public ProductDto mapToDto(Product product) {
         ProductDto productDto = new ProductDto();
 
+        productDto.setIdProduct(product.getIdProduct());
         productDto.setName(product.getName());
         productDto.setDescription(product.getDescription());
         productDto.setModel(product.getModel());
