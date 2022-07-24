@@ -42,7 +42,7 @@ public class JWTFilter extends GenericFilterBean {
                 Authentication authentication = this.tokenProvider.getAuthentication(jwt);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } else {
-                throw new BadRequestException(ERROR, HttpStatus.NOT_FOUND, UNAUTHORIZED_REQUEST);
+                throw new BadRequestException(ERROR, HttpStatus.UNAUTHORIZED, UNAUTHORIZED_REQUEST);
             }
         }
 
