@@ -7,3 +7,10 @@ INSERT INTO public.product (name, description, model, assist_speed, battery_rang
 INSERT INTO public.product (name, description, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, image_path, type) VALUES ('Cowboy', 'Dream machine.', '4ST', 20, 70, 3, 19.2, 2590.00, 1, 0, '/assets/e-bikes/cowboy-4st/cowboy-4st-white.png', 1);
 INSERT INTO public.product (name, description, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, image_path, type) VALUES ('Cowboy', 'Dream machine.', '4ST', 20, 70, 3, 19.2, 2590.00, 2, 3, '/assets/e-bikes/cowboy-4st/cowboy-4st-dark-gray.png', 1);
 INSERT INTO public.product (name, description, model, assist_speed, battery_range, charging_time, weight, price, color, available_quantity, image_path, type) VALUES ('Cowboy', 'Dream machine.', '4ST', 20, 70, 3, 19.2, 2590.00, 3, 2, '/assets/e-bikes/cowboy-4st/cowboy-4st-black.png', 1);
+
+INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Carapax 2.0', 85.99, 3, 2, '/assets/helmets/alpina/alpina_black.png', 3);
+INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Plose Mips', 99.95, 4, 6, '/assets/helmets/alpina/alpina_blue.png', 3);
+INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Plose Mips', 99.95, 5, 3, '/assets/helmets/alpina/alpina_orange.png', 3);
+INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Plose Mips', 99.95, 6, 3, '/assets/helmets/alpina/alpina_pink.png', 3);
+INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Panoma 2.0', 35.99, 1, 9, '/assets/helmets/alpina/alpina_white.png', 3);
+INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Panoma 2.0', 35.99, 7, 4, '/assets/helmets/alpina/alpina_yellow.png', 3);

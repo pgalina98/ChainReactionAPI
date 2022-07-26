@@ -11,7 +11,11 @@ public enum ProductColor {
 
     WHITE((short) 1, "WHITE"),
     GRAY_DARK((short) 2, "GRAY-DARK"),
-    BLACK((short) 3, "BLACK");
+    BLACK((short) 3, "BLACK"),
+    BLUE((short) 4, "BLUE"),
+    ORANGE((short) 5, "ORANGE"),
+    PINK((short) 6, "PINK"),
+    YELLOW((short) 7, "YELLOW");
 
     private Short idProductColor;
     private String value;

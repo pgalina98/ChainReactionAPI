@@ -11,7 +11,7 @@ public enum ProductType {
 
     E_BIKE((short) 1, "E-BIKE"),
     BIKE((short) 2, "BIKE"),
-    ACCESSORIES((short) 3, "ACCESSORIES");
+    HELMET((short) 3, "HELMET");
 
     private Short idProductType;
     private String value;
