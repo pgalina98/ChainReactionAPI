@@ -13,4 +13,5 @@ public final class ExceptionMessages {
     public static final String USER_WITH_PROVIDED_USERNAME_ALREADY_EXISTS = "User with provided username already exists.";
 
     public static final String PRODUCT_TYPE_DOES_NOT_EXIST = "Product type doesn't exist.";
+    public static final String PRODUCT_DOES_NOT_EXIST = "Product doesn't exist.";
 }
