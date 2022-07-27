@@ -5,9 +5,9 @@ server:
     include-message: always
 
 # JWT Configuration
-# Token is valid for 1 hour, and refresh token is valid for 1 week
+# Token is valid for 1 week (for testing purposes only!), and refresh token is valid for 1 week
 jwt:
-  token-validity-seconds: 3600
+  token-validity-seconds: 604800
   refresh-token-validity-seconds: 604800
   base64-secret: 137d1e254d423e51989c248afd83dd7b16539b10884780ca30184f2ef4e702590cd8af93cad5863d70210bb820479e6d2c6a97000c64ddb60e7ad9ab841aa875
 
