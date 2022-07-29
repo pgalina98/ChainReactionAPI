@@ -46,6 +46,12 @@ public class Product extends BaseAuditEntity {
     @Column(name = "available_quantity")
     private Integer availableQuantity;
 
+    @Column(name = "for_rent")
+    private Boolean forRent;
+
+    @Column(name = "rent_price_per_hour")
+    private Double rentPricePerHour;
+
     @Column(name = "image_path")
     private String imagePath;
 

@@ -27,6 +27,8 @@ CREATE TABLE public.product
     price DOUBLE PRECISION NOT NULL,
     color SMALLINT,
     available_quantity INTEGER NOT NULL,
+    for_rent BOOLEAN DEFAULT FALSE NOT NULL,
+    rent_price_per_hour DOUBLE PRECISION,
     image_path VARCHAR(255) NOT NULL,
     type SMALLINT NOT NULL,
     created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
