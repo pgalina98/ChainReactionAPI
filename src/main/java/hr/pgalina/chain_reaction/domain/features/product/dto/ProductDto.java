@@ -31,6 +31,10 @@ public class ProductDto implements Serializable {
 
     private Integer availableQuantity;
 
+    private Boolean forRent;
+
+    private Double rentPricePerHour;
+
     private String imagePath;
 
     private ProductTypeDto type;

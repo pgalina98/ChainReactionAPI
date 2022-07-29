@@ -33,6 +33,8 @@ public class ProductMapper {
             productColorMapper.mapToDto(ProductColor.findByIdProductColor(product.getColor()))
         );
         productDto.setAvailableQuantity(product.getAvailableQuantity());
+        productDto.setForRent(product.getForRent());
+        productDto.setRentPricePerHour(product.getRentPricePerHour());
         productDto.setImagePath(product.getImagePath());
         productDto.setType(
             productTypeMapper.mapToDto(ProductType.findByIdProductType(product.getType()))
