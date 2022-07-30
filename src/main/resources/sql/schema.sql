@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS public.user;
+DROP TABLE IF EXISTS public.user CASCADE;
 CREATE TABLE public.user
 (
     id_user BIGSERIAL PRIMARY KEY,
@@ -13,7 +13,7 @@ CREATE TABLE public.user
     is_admin BOOLEAN DEFAULT FALSE
 );
 
-DROP TABLE IF EXISTS public.product;
+DROP TABLE IF EXISTS public.product CASCADE;
 CREATE TABLE public.product
 (
     id_product BIGSERIAL PRIMARY KEY,
@@ -31,6 +31,26 @@ CREATE TABLE public.product
     rent_price_per_hour DOUBLE PRECISION,
     image_path VARCHAR(255) NOT NULL,
     type SMALLINT NOT NULL,
+    created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS public.rent;
+CREATE TABLE public.rent
+(
+    id_rent BIGSERIAL PRIMARY KEY,
+    id_product BIGINT NOT NULL
+        CONSTRAINT rent_product_id_product_fk
+            REFERENCES public.product,
+    id_user BIGINT NOT NULL
+        CONSTRAINT rent_user_id_user_fk
+            REFERENCES public.user,
+    location BIGINT NOT NULL,
+    date DATE NOT NULL,
+    active_from TIME NOT NULL,
+    active_to TIME NOT NULL,
     created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
     created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,

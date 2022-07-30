@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -32,4 +34,7 @@ public class User extends BaseAuditEntity {
     @Column(name = "is_admin")
     @ColumnDefault("false")
     private Boolean isAdmin;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rent> rents = new ArrayList<>();
 }

@@ -14,4 +14,6 @@ public final class ExceptionMessages {
 
     public static final String PRODUCT_TYPE_DOES_NOT_EXIST = "Product type doesn't exist.";
     public static final String PRODUCT_DOES_NOT_EXIST = "Product doesn't exist.";
+
+    public static final String LOCATION_DOES_NOT_EXIST = "Location doesn't exist.";
 }
