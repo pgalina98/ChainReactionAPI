@@ -27,7 +27,7 @@ public class RentServiceImpl implements RentService {
 
         List<LocalDateTime> availableTimeslots = new ArrayList<>();
 
-        Workday currentWorkday =  Workday.findByCurrentDay();
+        Workday currentWorkday =  Workday.findByDate(date);
 
         List<Rent> productRentals = rentRepository
             .findAllByDate(date);

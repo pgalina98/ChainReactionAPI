@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
@@ -31,6 +33,20 @@ public enum Workday {
 
         return Arrays.stream(Workday.values())
                 .filter(workday -> workday.getDayName().equals(currentDayName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public static Workday findByDate(LocalDate date) {
+        String dayName = new SimpleDateFormat("EEEE", Locale.ENGLISH)
+            .format(java.util.Date
+                .from(date.atStartOfDay()
+                .atZone(ZoneId.systemDefault())
+                .toInstant())
+            );
+
+        return Arrays.stream(Workday.values())
+                .filter(workday -> workday.getDayName().equals(dayName))
                 .findFirst()
                 .orElse(null);
     }
