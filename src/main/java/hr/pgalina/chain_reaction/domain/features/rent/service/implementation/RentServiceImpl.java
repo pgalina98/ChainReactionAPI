@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,10 @@ public class RentServiceImpl implements RentService {
     private final RentRepository rentRepository;
 
     @Override
-    public List<LocalTime> getAvailableTimeslots(Long idProduct, Short idLocation, LocalDate date) {
+    public List<LocalDateTime> getAvailableTimeslots(Long idProduct, Short idLocation, LocalDate date) {
         log.info("Entered getAvailableTimeslots in RentEBikeServiceImpl with idProduct {}, idLocation {} and date {}.", idProduct, idLocation, date);
 
-        List<LocalTime> availableTimeslots = new ArrayList<>();
+        List<LocalDateTime> availableTimeslots = new ArrayList<>();
 
         Workday currentWorkday =  Workday.findByCurrentDay();
 
@@ -43,7 +44,7 @@ public class RentServiceImpl implements RentService {
                 );
 
             if (!isCurrentHourBetweenAnyOfOccupiedTimeslots) {
-                availableTimeslots.add(hour);
+                availableTimeslots.add(LocalDateTime.of(date, hour));
             }
         }
 

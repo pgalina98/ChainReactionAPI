@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class RentController {
     private final RentService rentService;
 
     @GetMapping("/{idProduct}")
-    public ResponseEntity<List<LocalTime>> fetchAvailableTimeslots(
+    public ResponseEntity<List<LocalDateTime>> fetchAvailableTimeslots(
         @PathVariable Long idProduct,
         @RequestParam Short idLocation,
         @RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy.") LocalDate date
