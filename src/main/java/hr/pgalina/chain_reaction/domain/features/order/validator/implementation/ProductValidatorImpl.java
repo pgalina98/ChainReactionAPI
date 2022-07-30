@@ -1,9 +1,9 @@
-package hr.pgalina.chain_reaction.domain.features.product.validator.implementation;
+package hr.pgalina.chain_reaction.domain.features.order.validator.implementation;
 
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants;
-import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductType;
-import hr.pgalina.chain_reaction.domain.features.product.validator.ProductValidator;
+import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
+import hr.pgalina.chain_reaction.domain.features.order.validator.ProductValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;

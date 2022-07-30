@@ -1,4 +1,4 @@
-package hr.pgalina.chain_reaction.domain.features.product.enumeration;
+package hr.pgalina.chain_reaction.domain.features.order.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
