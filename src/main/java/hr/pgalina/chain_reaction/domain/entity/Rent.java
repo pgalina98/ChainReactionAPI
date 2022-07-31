@@ -26,6 +26,16 @@ public class Rent extends BaseAuditEntity {
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "id_helmet", referencedColumnName = "id_product")
+    private Product helmet;
+
+    @Column(name = "helmet_size")
+    private Short helmetSize;
+
+    @Column(name = "location")
+    private Long location;
+
     @Column(name = "date")
     private LocalDate date;
 

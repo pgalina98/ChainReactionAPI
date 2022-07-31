@@ -42,11 +42,15 @@ CREATE TABLE public.rent
 (
     id_rent BIGSERIAL PRIMARY KEY,
     id_product BIGINT NOT NULL
-        CONSTRAINT rent_product_id_product_fk
+        CONSTRAINT rent_product_bike_id_product_fk
             REFERENCES public.product,
     id_user BIGINT NOT NULL
         CONSTRAINT rent_user_id_user_fk
             REFERENCES public.user,
+    id_helmet BIGINT NOT NULL
+        CONSTRAINT rent_product_helmet_id_product_fk
+            REFERENCES public.product,
+    helmet_size SMALLINT NOT NULL,
     location BIGINT NOT NULL,
     date DATE NOT NULL,
     active_from TIME NOT NULL,
