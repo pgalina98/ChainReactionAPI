@@ -16,4 +16,6 @@ public final class ExceptionMessages {
     public static final String PRODUCT_DOES_NOT_EXIST = "Product doesn't exist.";
 
     public static final String LOCATION_DOES_NOT_EXIST = "Location doesn't exist.";
+
+    public static final String RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS = "Rent for some of the provided timeslots already exists.";
 }

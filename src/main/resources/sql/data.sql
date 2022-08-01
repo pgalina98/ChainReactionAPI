@@ -13,4 +13,4 @@ INSERT INTO public.product (name, model, price, color, available_quantity, image
 INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Plose Mips', 99.95, 6, 3, '/assets/helmets/alpina/alpina_pink.png', 3);
 INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Panoma 2.0', 35.99, 1, 9, '/assets/helmets/alpina/alpina_white.png', 3);
 
-INSERT INTO public.rent (id_product, id_user, id_helmet, helmet_size, location, date, active_from, active_to) VALUES (1, 1, 7, 2, 1, '2022-08-03', '13:00:00', '15:00:00');
+INSERT INTO public.rent (id_product, id_user, id_helmet, helmet_size, location, date, active_from, active_to) VALUES (1, 1, 7, 2, 1, '2022-08-03', '13:00:00', '14:00:00');

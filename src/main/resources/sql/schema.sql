@@ -51,7 +51,7 @@ CREATE TABLE public.rent
         CONSTRAINT rent_product_helmet_id_product_fk
             REFERENCES public.product,
     helmet_size SMALLINT NOT NULL,
-    location BIGINT NOT NULL,
+    location SMALLINT NOT NULL,
     date DATE NOT NULL,
     active_from TIME NOT NULL,
     active_to TIME NOT NULL,

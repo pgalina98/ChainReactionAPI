@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
+import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
 import hr.pgalina.chain_reaction.domain.features.rent.service.RentService;
-import hr.pgalina.chain_reaction.domain.features.rent.validator.RentValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Slf4j
@@ -19,8 +18,6 @@ import java.util.List;
 @RequestMapping("/api/rents")
 @RequiredArgsConstructor
 public class RentController {
-
-    private final RentValidator rentValidator;
 
     private final RentService rentService;
 
@@ -32,8 +29,19 @@ public class RentController {
     ) {
         log.info("Entered '/api/rents' with product ID {}, idLocation {} and date {} [GET].", idProduct, idLocation, date);
 
-        rentValidator.validateLocation(idLocation);
-
         return new ResponseEntity<>(rentService.getAvailableTimeslots(idProduct, idLocation, date), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> saveRent(@RequestBody RentForm rentForm) {
+        log.info("Entered '/api/rents' with product ID {}, idLocation {} and date {} [POST].",
+            rentForm.getProduct().getIdProduct(),
+            rentForm.getLocation().getIdLocation(),
+            rentForm.getDate()
+        );
+
+        rentService.createRent(rentForm);
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

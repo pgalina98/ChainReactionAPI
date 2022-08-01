@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Setter
@@ -19,12 +20,12 @@ public class Rent extends BaseAuditEntity {
     private Long idRent;
 
     @ManyToOne
-    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
-    private Product product;
-
-    @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "id_helmet", referencedColumnName = "id_product")
@@ -34,7 +35,7 @@ public class Rent extends BaseAuditEntity {
     private Short helmetSize;
 
     @Column(name = "location")
-    private Long location;
+    private Short location;
 
     @Column(name = "date")
     private LocalDate date;

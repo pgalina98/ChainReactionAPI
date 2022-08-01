@@ -12,7 +12,7 @@ public class UserMapper {
 
     private final PasswordEncoder passwordEncoder;
 
-    public User mapFormToEntity(RegisterForm registerForm) {
+    public User mapToEntity(RegisterForm registerForm) {
         User user = new User();
 
         user.setFullname(registerForm.getFullname());
