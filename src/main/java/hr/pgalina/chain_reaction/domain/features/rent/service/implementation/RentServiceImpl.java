@@ -1,10 +1,13 @@
 package hr.pgalina.chain_reaction.domain.features.rent.service.implementation;
 
 import hr.pgalina.chain_reaction.domain.entity.Rent;
+import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
+import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
 import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Workday;
 import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
 import hr.pgalina.chain_reaction.domain.features.rent.service.RentService;
 import hr.pgalina.chain_reaction.domain.features.rent.validator.RentValidator;
+import hr.pgalina.chain_reaction.domain.mapper.LocationMapper;
 import hr.pgalina.chain_reaction.domain.mapper.RentMapper;
 import hr.pgalina.chain_reaction.domain.repository.RentRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +31,7 @@ public class RentServiceImpl implements RentService {
     private final RentRepository rentRepository;
 
     private final RentMapper rentMapper;
+    private final LocationMapper locationMapper;
 
     @Override
     @Transactional(readOnly = true)
@@ -76,5 +80,13 @@ public class RentServiceImpl implements RentService {
         List<Rent> productRentals = rentMapper.mapToEntity(rentForm);
 
         rentRepository.saveAll(productRentals);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LocationDto> getAvailableRentLocations() {
+        log.info("Entered getAvailableRentLocations in RentEBikeServiceImpl.");
+
+        return locationMapper.mapToDtos(Location.ALL_LOCATIONS);
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -19,6 +20,8 @@ public enum Location {
 
     private final Short idLocation;
     private final String value;
+
+    public static List<Location> ALL_LOCATIONS = Arrays.asList(AUSTIN, BOSTON, NEW_YORK, TAOS, MADISON, SAVANNAH, NASHVILLE);
 
     public static Location findByIdLocation(Short idLocation) {
         return Arrays.stream(Location.values())

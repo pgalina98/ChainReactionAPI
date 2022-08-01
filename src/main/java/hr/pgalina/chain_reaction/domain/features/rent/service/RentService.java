@@ -1,5 +1,6 @@
 package hr.pgalina.chain_reaction.domain.features.rent.service;
 
+import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
 import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
 
 import java.time.LocalDate;
@@ -11,4 +12,6 @@ public interface RentService {
     List<LocalDateTime> getAvailableTimeslots(Long idProduct, Short idLocation, LocalDate date);
 
     void createRent(RentForm rentForm);
+
+    List<LocationDto> getAvailableRentLocations();
 }

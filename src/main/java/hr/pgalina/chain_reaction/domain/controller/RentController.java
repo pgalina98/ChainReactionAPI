@@ -1,5 +1,6 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
+import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
 import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
 import hr.pgalina.chain_reaction.domain.features.rent.service.RentService;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +44,12 @@ public class RentController {
         rentService.createRent(rentForm);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/available-locations")
+    public ResponseEntity<List<LocationDto>> fetchAvailableRentLocations() {
+        log.info("Entered '/api/rents/available-locations' [GET].");
+
+        return new ResponseEntity<>(rentService.getAvailableRentLocations(), HttpStatus.OK);
     }
 }
