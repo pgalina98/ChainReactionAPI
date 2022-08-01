@@ -50,9 +50,8 @@ public class RentMapper {
                     productRental.setHelmetSize(rentForm.getHelmetSize());
                     productRental.setLocation(rentForm.getLocation().getIdLocation());
                     productRental.setDate(rentForm.getDate());
-                    // TODO -> REMOVE ADJUSTMENTS AFTER SETTING UP JAKSON CORRECTLY
-                    productRental.setActiveFrom(timeslot.toLocalTime().plusHours(2));
-                    productRental.setActiveTo(timeslot.toLocalTime().plusHours(3));
+                    productRental.setActiveFrom(timeslot);
+                    productRental.setActiveTo(timeslot.plusHours(1));
 
                     productRentals.add(productRental);
                 }

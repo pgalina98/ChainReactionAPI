@@ -13,8 +13,8 @@ public enum ProductType {
     BIKE((short) 2, "BIKE"),
     HELMET((short) 3, "HELMET");
 
-    private Short idProductType;
-    private String value;
+    private final Short idProductType;
+    private final String value;
 
     public static ProductType findByIdProductType(Short idProductType) {
         return Arrays.stream(ProductType.values())

@@ -17,8 +17,8 @@ public enum Location {
     SAVANNAH((short) 6, "Savannah"),
     NASHVILLE((short) 7, "Nashville");
 
-    private Short idLocation;
-    private String value;
+    private final Short idLocation;
+    private final String value;
 
     public static Location findByIdLocation(Short idLocation) {
         return Arrays.stream(Location.values())

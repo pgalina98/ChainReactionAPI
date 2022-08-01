@@ -17,8 +17,8 @@ public enum ProductColor {
     PINK((short) 6, "PINK"),
     YELLOW((short) 7, "YELLOW");
 
-    private Short idProductColor;
-    private String value;
+    private final Short idProductColor;
+    private final String value;
 
     public static ProductColor findByIdProductColor(Short idProductColor) {
         return Arrays.stream(ProductColor.values())

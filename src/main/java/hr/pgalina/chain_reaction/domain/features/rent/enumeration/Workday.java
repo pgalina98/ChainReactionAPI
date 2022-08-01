@@ -23,10 +23,10 @@ public enum Workday {
     SATURDAY((short) 6, "Saturday", LocalTime.of(13, 0,0), LocalTime.of(21, 0,0)),
     SUNDAY((short) 7, "Sunday", LocalTime.of(15, 0,0), LocalTime.of(21, 0,0));
 
-    private Short idWorkday;
-    private String dayName;
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private final Short idWorkday;
+    private final String dayName;
+    private final LocalTime startTime;
+    private final LocalTime endTime;
 
     public static Workday findByCurrentDay() {
         String currentDayName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(new Date());

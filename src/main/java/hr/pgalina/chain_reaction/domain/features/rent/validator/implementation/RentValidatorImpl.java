@@ -15,10 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.LOCATION_DOES_NOT_EXIST;
 import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS;
@@ -59,27 +58,21 @@ public class RentValidatorImpl implements RentValidator {
         );
     }
 
-    private void validateDateAndTimeslots(Long idProduct, LocalDate date, List<LocalDateTime> timeslots) {
+    private void validateDateAndTimeslots(Long idProduct, LocalDate date, List<LocalTime> timeslots) {
         List<Rent> productRentals = rentRepository
                 .findAllByIdProductAndDate(idProduct, date);
-
-        // TODO -> REMOVE ADJUSTMENTS AFTER SETTING UP JAKSON CORRECTLY
-        final List<LocalDateTime> finalTimeslots = timeslots
-            .stream()
-            .map(timeslot -> timeslot.plusHours(2))
-            .collect(Collectors.toList());
 
         boolean isAnyOfTimeslotsOverlapsWithExistingProductRentals =
             productRentals
                 .stream()
                 .anyMatch(
                     productRent ->
-                        finalTimeslots
+                        timeslots
                             .stream()
                             .anyMatch(
                                 timeslot ->
-                                    (timeslot.toLocalTime().isAfter(productRent.getActiveFrom()) || timeslot.toLocalTime().equals(productRent.getActiveFrom())) &&
-                                    (timeslot.toLocalTime().isBefore(productRent.getActiveTo()) || timeslot.toLocalTime().equals(productRent.getActiveTo()))
+                                    (timeslot.isAfter(productRent.getActiveFrom()) || timeslot.equals(productRent.getActiveFrom())) &&
+                                    (timeslot.isBefore(productRent.getActiveTo()) || timeslot.equals(productRent.getActiveTo()))
                             )
                 );
 
