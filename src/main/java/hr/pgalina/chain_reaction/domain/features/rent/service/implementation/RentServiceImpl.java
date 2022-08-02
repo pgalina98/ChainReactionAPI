@@ -1,6 +1,8 @@
 package hr.pgalina.chain_reaction.domain.features.rent.service.implementation;
 
+import hr.pgalina.chain_reaction.config.AsyncExecutor;
 import hr.pgalina.chain_reaction.domain.entity.Rent;
+import hr.pgalina.chain_reaction.domain.features.notification.service.NotificationService;
 import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
 import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
 import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Workday;
@@ -20,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -29,6 +32,8 @@ public class RentServiceImpl implements RentService {
     private final RentValidator rentValidator;
 
     private final RentRepository rentRepository;
+
+    private final NotificationService notificationService;
 
     private final RentMapper rentMapper;
     private final LocationMapper locationMapper;
@@ -80,6 +85,8 @@ public class RentServiceImpl implements RentService {
         List<Rent> productRentals = rentMapper.mapToEntity(rentForm);
 
         rentRepository.saveAll(productRentals);
+
+        AsyncExecutor.executeAfterTransactionCommits(() -> notificationService.sendInformationAboutNotificationCountChange(rentForm.getIdUser()));
     }
 
     @Override

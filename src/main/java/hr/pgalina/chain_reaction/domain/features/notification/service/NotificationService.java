@@ -9,4 +9,6 @@ public interface NotificationService {
     List<NotificationDto> getAllNotificationsForUser(Long idUser);
 
     Long getNotificationsCountForUser(Long idUser);
+
+    void sendInformationAboutNotificationCountChange(Long idUser);
 }
