@@ -33,6 +33,13 @@ public class RentController {
         return new ResponseEntity<>(rentService.getAvailableTimeslots(idProduct, idLocation, date), HttpStatus.OK);
     }
 
+    @GetMapping("/available-locations")
+    public ResponseEntity<List<LocationDto>> fetchAvailableRentLocations() {
+        log.info("Entered '/api/rents/available-locations' [GET].");
+
+        return new ResponseEntity<>(rentService.getAvailableRentLocations(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<?> saveRent(@RequestBody RentForm rentForm) {
         log.info("Entered '/api/rents' with product ID {}, idLocation {} and date {} [POST].",
@@ -44,12 +51,5 @@ public class RentController {
         rentService.createRent(rentForm);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
-    @GetMapping("/available-locations")
-    public ResponseEntity<List<LocationDto>> fetchAvailableRentLocations() {
-        log.info("Entered '/api/rents/available-locations' [GET].");
-
-        return new ResponseEntity<>(rentService.getAvailableRentLocations(), HttpStatus.OK);
     }
 }

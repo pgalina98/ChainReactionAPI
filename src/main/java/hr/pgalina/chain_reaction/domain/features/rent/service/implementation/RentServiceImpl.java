@@ -68,7 +68,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     @Transactional
-    public void createRent(RentForm rentForm) {
+    public synchronized void createRent(RentForm rentForm) {
         log.info("Entered saveRent in RentEBikeServiceImpl with idProduct {}, idLocation {} and date {}.",
             rentForm.getProduct().getIdProduct(),
             rentForm.getLocation().getIdLocation(),

@@ -11,7 +11,7 @@ public interface RentService {
 
     List<LocalDateTime> getAvailableTimeslots(Long idProduct, Short idLocation, LocalDate date);
 
-    void createRent(RentForm rentForm);
-
     List<LocationDto> getAvailableRentLocations();
+
+    void createRent(RentForm rentForm);
 }
