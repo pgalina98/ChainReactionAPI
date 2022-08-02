@@ -58,3 +58,6 @@ log4j:
 
         ConversionPattern: |
           [%t] %-5p %c %x - %m%n
+
+websocket-server:
+  url: http://localhost:8090

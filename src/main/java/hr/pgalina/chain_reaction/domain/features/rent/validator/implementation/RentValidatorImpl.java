@@ -60,7 +60,7 @@ public class RentValidatorImpl implements RentValidator {
 
     private void validateDateAndTimeslots(Long idProduct, LocalDate date, List<LocalTime> timeslots) {
         List<Rent> productRentals = rentRepository
-                .findAllByIdProductAndDate(idProduct, date);
+            .findRentsByIdProductAndDate(idProduct, date);
 
         boolean isAnyOfTimeslotsOverlapsWithExistingProductRentals =
             productRentals

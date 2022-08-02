@@ -28,7 +28,7 @@ public class RentController {
         @RequestParam Short idLocation,
         @RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy.") LocalDate date
     ) {
-        log.info("Entered '/api/rents' with product ID {}, idLocation {} and date {} [GET].", idProduct, idLocation, date);
+        log.info("Entered '/api/rents' with product ID {}, location ID {} and date {} [GET].", idProduct, idLocation, date);
 
         return new ResponseEntity<>(rentService.getAvailableTimeslots(idProduct, idLocation, date), HttpStatus.OK);
     }
@@ -42,7 +42,7 @@ public class RentController {
 
     @PostMapping
     public ResponseEntity<?> saveRent(@RequestBody RentForm rentForm) {
-        log.info("Entered '/api/rents' with product ID {}, idLocation {} and date {} [POST].",
+        log.info("Entered '/api/rents' with product ID {}, location ID {} and date {} [POST].",
             rentForm.getProduct().getIdProduct(),
             rentForm.getLocation().getIdLocation(),
             rentForm.getDate()

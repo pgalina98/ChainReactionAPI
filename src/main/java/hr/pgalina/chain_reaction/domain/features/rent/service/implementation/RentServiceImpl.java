@@ -45,7 +45,7 @@ public class RentServiceImpl implements RentService {
         Workday currentWorkday =  Workday.findByDate(date);
 
         List<Rent> productRentals = rentRepository
-            .findAllByIdProductAndDate(idProduct, date);
+            .findRentsByIdProductAndDate(idProduct, date);
 
         for (LocalTime hour = currentWorkday.getStartTime(); hour.isBefore(currentWorkday.getEndTime()); hour = hour.plusHours(1)  )  {
             final LocalTime finalHour = hour;

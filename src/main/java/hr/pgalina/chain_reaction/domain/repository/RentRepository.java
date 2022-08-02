@@ -12,5 +12,5 @@ import java.util.List;
 public interface RentRepository extends JpaRepository<Rent, Long> {
 
     @Query(value = "SELECT rent.* FROM Rent rent WHERE rent.id_product =:idProduct AND rent.date =:date", nativeQuery = true)
-    List<Rent> findAllByIdProductAndDate(Long idProduct, LocalDate date);
+    List<Rent> findRentsByIdProductAndDate(Long idProduct, LocalDate date);
 }
