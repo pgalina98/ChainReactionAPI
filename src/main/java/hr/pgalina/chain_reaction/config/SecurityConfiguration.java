@@ -3,7 +3,6 @@ package hr.pgalina.chain_reaction.config;
 import hr.pgalina.chain_reaction.security.jwt.TokenProvider;
 import hr.pgalina.chain_reaction.security.jwt.config.JWTAuthenticationEntryPoint;
 import hr.pgalina.chain_reaction.security.jwt.config.JWTConfigurer;
-import hr.pgalina.chain_reaction.security.jwt.service.JWTUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableWebSecurity
@@ -45,6 +45,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 return encoder.matches(rawPassword, encodedPassword);
             }
         };
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
     @Override
