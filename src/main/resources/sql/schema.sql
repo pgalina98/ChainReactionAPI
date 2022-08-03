@@ -60,3 +60,18 @@ CREATE TABLE public.rent
     modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
     modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+DROP TABLE IF EXISTS public.notification;
+CREATE TABLE public.notification
+(
+    id_notification BIGSERIAL PRIMARY KEY,
+    id_user BIGINT NOT NULL
+        CONSTRAINT notification_user_id_user_fk
+            REFERENCES public.user,
+    notification_title TEXT NOT NULL,
+    notification_text TEXT NOT NULL,
+    created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
