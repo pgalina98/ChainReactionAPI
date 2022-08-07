@@ -1,10 +1,14 @@
 package hr.pgalina.chain_reaction.domain.features.notification.service.implementation;
 
 import hr.pgalina.chain_reaction.domain.entity.Notification;
+import hr.pgalina.chain_reaction.domain.entity.Rent;
+import hr.pgalina.chain_reaction.domain.entity.User;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.features.notification.constants.NotificationConstants;
 import hr.pgalina.chain_reaction.domain.features.notification.dto.NotificationDto;
 import hr.pgalina.chain_reaction.domain.features.notification.service.NotificationService;
+import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
 import hr.pgalina.chain_reaction.domain.mapper.NotificationMapper;
 import hr.pgalina.chain_reaction.domain.repository.NotificationRepository;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
@@ -73,7 +77,36 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void sendInformationAboutNotificationCountChange(Long idUser) {
+    public void createNotificationForSuccessfullyCreatedRent(Long idUser, List<Rent> productRentals) {
+        log.info("Entered createNotificationForSuccessfullyCreatedRent in NotificationServiceImpl with idUser {}.", idUser);
+
+        Rent productRental = productRentals.get(0);
+
+        createNotification(
+            NotificationConstants.RENT_NOTIFICATION,
+            String.format(
+                NotificationConstants.RENT_SUCCESSFULLY_CREATED,
+                Location.findByIdLocation(productRental.getLocation()).getValue(),
+                productRental.getDate()
+            ),
+            idUser
+        );
+        sendInformationAboutNotificationCountChange(idUser);
+    }
+
+    private void createNotification(String title, String text, Long idUser) {
+        Notification notification = new Notification();
+
+        User user = userRepository
+            .findById(idUser)
+            .orElseThrow(() -> new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.NOT_FOUND, USER_DOES_NOT_EXIST));
+
+        notification.setUser(user);
+        notification.setNotificationTitle(title);
+        notification.setNotificationText(text);
+    }
+
+    private void sendInformationAboutNotificationCountChange(Long idUser) {
         log.info("Entered sendInformationAboutNotificationCountChange in NotificationServiceImpl with idUser {}.", idUser);
 
         URI uri = createCompleteUri(idUser);

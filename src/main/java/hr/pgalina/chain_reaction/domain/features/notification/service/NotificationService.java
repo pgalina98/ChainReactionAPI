@@ -1,5 +1,6 @@
 package hr.pgalina.chain_reaction.domain.features.notification.service;
 
+import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.features.notification.dto.NotificationDto;
 
 import java.util.List;
@@ -10,5 +11,6 @@ public interface NotificationService {
 
     Long getNotificationsCountForUser(Long idUser);
 
-    void sendInformationAboutNotificationCountChange(Long idUser);
+
+    void createNotificationForSuccessfullyCreatedRent(Long idUser, List<Rent> productRentals);
 }

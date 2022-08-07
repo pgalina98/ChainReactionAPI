@@ -86,7 +86,7 @@ public class RentServiceImpl implements RentService {
 
         rentRepository.saveAll(productRentals);
 
-        AsyncExecutor.executeAfterTransactionCommits(() -> notificationService.sendInformationAboutNotificationCountChange(rentForm.getIdUser()));
+        AsyncExecutor.executeAfterTransactionCommits(() -> notificationService.createNotificationForSuccessfullyCreatedRent(rentForm.getIdUser(), productRentals));
     }
 
     @Override
