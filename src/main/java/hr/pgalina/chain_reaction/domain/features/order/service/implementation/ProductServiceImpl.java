@@ -2,7 +2,7 @@ package hr.pgalina.chain_reaction.domain.features.order.service.implementation;
 
 import hr.pgalina.chain_reaction.domain.entity.Product;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.features.order.dto.ProductDto;
 import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
 import hr.pgalina.chain_reaction.domain.features.order.service.ProductService;
@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.PRODUCT_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.PRODUCT_DOES_NOT_EXIST;
 
 import java.util.List;
 

@@ -17,8 +17,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants.ERROR;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.UNAUTHORIZED_REQUEST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants.ERROR;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.UNAUTHORIZED_REQUEST;
 
 @Slf4j
 @Component

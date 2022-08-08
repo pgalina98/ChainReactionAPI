@@ -1,4 +1,4 @@
-package hr.pgalina.chain_reaction.domain.exception.contants;
+package hr.pgalina.chain_reaction.domain.exception.contant;
 
 public final class ExceptionMessages {
 

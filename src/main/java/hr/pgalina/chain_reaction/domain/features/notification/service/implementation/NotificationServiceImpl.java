@@ -1,17 +1,19 @@
 package hr.pgalina.chain_reaction.domain.features.notification.service.implementation;
 
+import hr.pgalina.chain_reaction.domain.constant.DateTimeConstants;
 import hr.pgalina.chain_reaction.domain.entity.Notification;
 import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.entity.User;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants;
-import hr.pgalina.chain_reaction.domain.features.notification.constants.NotificationConstants;
+import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.features.notification.constant.NotificationConstants;
 import hr.pgalina.chain_reaction.domain.features.notification.dto.NotificationDto;
 import hr.pgalina.chain_reaction.domain.features.notification.service.NotificationService;
 import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
 import hr.pgalina.chain_reaction.domain.mapper.NotificationMapper;
 import hr.pgalina.chain_reaction.domain.repository.NotificationRepository;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
+import hr.pgalina.chain_reaction.domain.util.DateTimeUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Slf4j
 @Service
@@ -37,9 +39,8 @@ import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessa
 public class NotificationServiceImpl implements NotificationService {
 
     private static final String PRIVILEGED_TOKEN = "Basic Gts4RPPZfx35g1/jVeQlYp6HJAE=";
-    private static final String WS_NOTIFICATIONS_UPDATE_PATH = "/ws/notifications/update";
+    private static final String WS_NOTIFICATIONS_UPDATE_PATH = "/ws/notifications/update?idUser={idUser}";
     private static final String USER_ID_PARAM = "idUser";
-    private static final String UPDATED_PARAM = "updated";
 
     private final UserRepository userRepository;
     private final NotificationRepository notificationRepository;
@@ -87,7 +88,7 @@ public class NotificationServiceImpl implements NotificationService {
             String.format(
                 NotificationConstants.RENT_SUCCESSFULLY_CREATED,
                 Location.findByIdLocation(productRental.getLocation()).getValue(),
-                productRental.getDate()
+                DateTimeUtils.formatDate(productRental.getDate(), DateTimeConstants.APP_LOCAL_DATE_FORMAT)
             ),
             idUser
         );
@@ -104,6 +105,8 @@ public class NotificationServiceImpl implements NotificationService {
         notification.setUser(user);
         notification.setNotificationTitle(title);
         notification.setNotificationText(text);
+
+        notificationRepository.save(notification);
     }
 
     private void sendInformationAboutNotificationCountChange(Long idUser) {
@@ -119,7 +122,6 @@ public class NotificationServiceImpl implements NotificationService {
     private URI createCompleteUri(Long idUser) {
         Map<String, String> params = new HashMap<>();
         params.put(USER_ID_PARAM, String.valueOf(idUser));
-        params.put(UPDATED_PARAM, String.valueOf(true));
 
         return UriComponentsBuilder.fromUriString(webSocketServerUrl + WS_NOTIFICATIONS_UPDATE_PATH)
             .buildAndExpand(params)

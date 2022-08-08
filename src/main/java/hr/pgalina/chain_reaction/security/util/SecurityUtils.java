@@ -1,6 +1,6 @@
-package hr.pgalina.chain_reaction.security.utils;
+package hr.pgalina.chain_reaction.security.util;
 
-import hr.pgalina.chain_reaction.security.jwt.constants.AuthoritiesConstants;
+import hr.pgalina.chain_reaction.security.jwt.constant.AuthoritiesConstants;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;

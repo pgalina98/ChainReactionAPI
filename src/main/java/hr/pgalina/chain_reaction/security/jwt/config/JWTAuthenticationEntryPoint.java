@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants.ERROR;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.UNAUTHORIZED_REQUEST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants.ERROR;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.UNAUTHORIZED_REQUEST;
 
 @Component
 public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {

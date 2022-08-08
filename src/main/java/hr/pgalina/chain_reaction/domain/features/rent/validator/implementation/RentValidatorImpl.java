@@ -2,7 +2,7 @@ package hr.pgalina.chain_reaction.domain.features.rent.validator.implementation;
 
 import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.features.order.validator.ProductValidator;
 import hr.pgalina.chain_reaction.domain.features.register.validator.RegisterValidator;
 import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
@@ -19,8 +19,8 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.LOCATION_DOES_NOT_EXIST;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.LOCATION_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS;
 
 @Slf4j
 @Component

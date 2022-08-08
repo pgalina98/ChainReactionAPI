@@ -1,4 +1,4 @@
-package hr.pgalina.chain_reaction.security.jwt.constants;
+package hr.pgalina.chain_reaction.security.jwt.constant;
 
 public final class AuthoritiesConstants {
 

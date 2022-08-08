@@ -2,7 +2,7 @@ package hr.pgalina.chain_reaction.domain.mapper;
 
 import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
 import hr.pgalina.chain_reaction.domain.repository.ProductRepository;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.PRODUCT_DOES_NOT_EXIST;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.PRODUCT_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Component
 @RequiredArgsConstructor

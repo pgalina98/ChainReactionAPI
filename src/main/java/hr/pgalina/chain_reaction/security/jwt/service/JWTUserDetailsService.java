@@ -3,7 +3,7 @@ package hr.pgalina.chain_reaction.security.jwt.service;
 import hr.pgalina.chain_reaction.domain.entity.User;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
-import hr.pgalina.chain_reaction.security.jwt.constants.AuthoritiesConstants;
+import hr.pgalina.chain_reaction.security.jwt.constant.AuthoritiesConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ErrorTypeConstants.ERROR;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants.ERROR;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Slf4j
 @Service

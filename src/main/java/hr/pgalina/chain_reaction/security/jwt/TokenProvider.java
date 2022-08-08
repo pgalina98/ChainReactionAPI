@@ -2,7 +2,7 @@ package hr.pgalina.chain_reaction.security.jwt;
 
 import hr.pgalina.chain_reaction.domain.entity.User;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.security.utils.SecurityUtils;
+import hr.pgalina.chain_reaction.security.util.SecurityUtils;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -21,10 +21,10 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.INVALID_JWT_TOKEN;
-import static hr.pgalina.chain_reaction.domain.exception.contants.ExceptionMessages.UNKNOWN_JWT_TOKEN;
-import static hr.pgalina.chain_reaction.security.jwt.constants.AuthoritiesConstants.ADMIN;
-import static hr.pgalina.chain_reaction.security.jwt.constants.JWTConstants.*;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.INVALID_JWT_TOKEN;
+import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.UNKNOWN_JWT_TOKEN;
+import static hr.pgalina.chain_reaction.security.jwt.constant.AuthoritiesConstants.ADMIN;
+import static hr.pgalina.chain_reaction.security.jwt.constant.JWTConstants.*;
 
 @Slf4j
 @Component
