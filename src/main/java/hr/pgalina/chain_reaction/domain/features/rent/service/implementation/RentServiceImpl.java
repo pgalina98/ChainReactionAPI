@@ -60,11 +60,20 @@ public class RentServiceImpl implements RentService {
                 .anyMatch(
                     productRent ->
                         (finalHour.isAfter(productRent.getActiveFrom()) || finalHour.equals(productRent.getActiveFrom())) &&
-                        (finalHour.isBefore(productRent.getActiveTo()) || finalHour.equals(productRent.getActiveTo()))
+                        (finalHour.isBefore(productRent.getActiveTo()))
                 );
 
-            if (!isCurrentHourBetweenAnyOfOccupiedTimeslots) {
-                availableTimeslots.add(LocalDateTime.of(date, hour));
+            boolean isCurrentDate = date.isEqual(LocalDate.now());
+            boolean isAfterCurrentTimeWithOffset = finalHour.isAfter(LocalTime.now().plusMinutes(30));
+
+            if (isCurrentDate) {
+                if (isAfterCurrentTimeWithOffset && !isCurrentHourBetweenAnyOfOccupiedTimeslots) {
+                    availableTimeslots.add(LocalDateTime.of(date, hour));
+                }
+            } else {
+                if (!isCurrentHourBetweenAnyOfOccupiedTimeslots) {
+                    availableTimeslots.add(LocalDateTime.of(date, hour));
+                }
             }
         }
 

@@ -72,7 +72,7 @@ public class RentValidatorImpl implements RentValidator {
                             .anyMatch(
                                 timeslot ->
                                     (timeslot.isAfter(productRent.getActiveFrom()) || timeslot.equals(productRent.getActiveFrom())) &&
-                                    (timeslot.isBefore(productRent.getActiveTo()) || timeslot.equals(productRent.getActiveTo()))
+                                    (timeslot.isBefore(productRent.getActiveTo()))
                             )
                 );
 
