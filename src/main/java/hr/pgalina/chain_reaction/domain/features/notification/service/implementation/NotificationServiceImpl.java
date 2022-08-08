@@ -1,5 +1,6 @@
 package hr.pgalina.chain_reaction.domain.features.notification.service.implementation;
 
+import hr.pgalina.chain_reaction.config.AsyncExecutor;
 import hr.pgalina.chain_reaction.domain.constant.DateTimeConstants;
 import hr.pgalina.chain_reaction.domain.entity.Notification;
 import hr.pgalina.chain_reaction.domain.entity.Rent;
@@ -95,18 +96,18 @@ public class NotificationServiceImpl implements NotificationService {
         sendInformationAboutNotificationCountChange(idUser);
     }
 
-    private void createNotification(String title, String text, Long idUser) {
-        Notification notification = new Notification();
+    @Override
+    @Transactional
+    public void deleteNotificationsForUser(Long idUser) {
+        log.info("Entered removeNotificationsForUser in NotificationServiceImpl with idUser {}.", idUser);
 
-        User user = userRepository
-            .findById(idUser)
+        userRepository
+            .existsByIdUser(idUser)
             .orElseThrow(() -> new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.NOT_FOUND, USER_DOES_NOT_EXIST));
 
-        notification.setUser(user);
-        notification.setNotificationTitle(title);
-        notification.setNotificationText(text);
+        notificationRepository.deleteAllByUserIdUser(idUser);
 
-        notificationRepository.save(notification);
+        sendInformationAboutNotificationCountChange(idUser);
     }
 
     private void sendInformationAboutNotificationCountChange(Long idUser) {
@@ -117,6 +118,20 @@ public class NotificationServiceImpl implements NotificationService {
         HttpEntity<?> entity = new HttpEntity<>(createAuthHeader());
 
         restTemplate.postForEntity(uri, entity, Void.class);
+    }
+
+    private void createNotification(String title, String text, Long idUser) {
+        Notification notification = new Notification();
+
+        User user = userRepository
+                .findById(idUser)
+                .orElseThrow(() -> new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.NOT_FOUND, USER_DOES_NOT_EXIST));
+
+        notification.setUser(user);
+        notification.setNotificationTitle(title);
+        notification.setNotificationText(text);
+
+        notificationRepository.save(notification);
     }
 
     private URI createCompleteUri(Long idUser) {

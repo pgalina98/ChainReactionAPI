@@ -14,4 +14,6 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 
     @Query(value = "SELECT count(notification.*) FROM Notification notification WHERE notification.id_user =:idUser", nativeQuery = true)
     Long findNotificationsCountByIdUser(Long idUser);
+
+    void deleteAllByUserIdUser(Long idUser);
 }

@@ -1,12 +1,12 @@
 package hr.pgalina.chain_reaction.domain.util;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtils {
 
     public static String formatDate(LocalDate date, String format) {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat(format);
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(format);
 
         return dateFormatter.format(date);
     }

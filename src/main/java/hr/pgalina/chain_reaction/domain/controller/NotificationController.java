@@ -31,4 +31,14 @@ public class NotificationController {
 
         return new ResponseEntity<>(notificationService.getNotificationsCountForUser(idUser), HttpStatus.OK);
     }
+
+    @DeleteMapping
+    public ResponseEntity<?> removeNotificationsForUser(@RequestParam Long idUser) {
+        log.info("Entered '/api/notifications' with user ID {} [DELETE].", idUser);
+
+        notificationService.deleteNotificationsForUser(idUser);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

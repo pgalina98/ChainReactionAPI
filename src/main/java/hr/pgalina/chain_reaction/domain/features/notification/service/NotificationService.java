@@ -13,4 +13,6 @@ public interface NotificationService {
 
 
     void createNotificationForSuccessfullyCreatedRent(Long idUser, List<Rent> productRentals);
+
+    void deleteNotificationsForUser(Long idUser);
 }
