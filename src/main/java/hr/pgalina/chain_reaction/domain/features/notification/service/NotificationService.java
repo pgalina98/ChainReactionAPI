@@ -11,8 +11,9 @@ public interface NotificationService {
 
     Long getNotificationsCountForUser(Long idUser);
 
-
     void createNotificationForSuccessfullyCreatedRent(Long idUser, List<Rent> productRentals);
 
     void deleteNotificationsForUser(Long idUser);
+
+    void deleteNotificationById(Long idNotification);
 }

@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants.ERROR;
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants.ERROR;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Slf4j
 @Service

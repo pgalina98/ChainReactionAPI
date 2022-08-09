@@ -1,12 +1,11 @@
 package hr.pgalina.chain_reaction.domain.features.notification.service.implementation;
 
-import hr.pgalina.chain_reaction.config.AsyncExecutor;
 import hr.pgalina.chain_reaction.domain.constant.DateTimeConstants;
 import hr.pgalina.chain_reaction.domain.entity.Notification;
 import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.entity.User;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.features.notification.constant.NotificationConstants;
 import hr.pgalina.chain_reaction.domain.features.notification.dto.NotificationDto;
 import hr.pgalina.chain_reaction.domain.features.notification.service.NotificationService;
@@ -32,7 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.NOTIFICATION_DOES_NOT_EXIST;
 
 @Slf4j
 @Service
@@ -88,8 +88,12 @@ public class NotificationServiceImpl implements NotificationService {
             NotificationConstants.RENT_NOTIFICATION,
             String.format(
                 NotificationConstants.RENT_SUCCESSFULLY_CREATED,
+                productRental.getProduct().getName(),
+                productRental.getProduct().getModel(),
                 Location.findByIdLocation(productRental.getLocation()).getValue(),
-                DateTimeUtils.formatDate(productRental.getDate(), DateTimeConstants.APP_LOCAL_DATE_FORMAT)
+                DateTimeUtils.formatDate(productRental.getDate(), DateTimeConstants.APP_LOCAL_DATE_FORMAT),
+                DateTimeUtils.formatTime(productRental.getActiveFrom(), DateTimeConstants.APP_LOCAL_TIME_FORMAT),
+                DateTimeUtils.formatTime(productRental.getActiveTo(), DateTimeConstants.APP_LOCAL_TIME_FORMAT)
             ),
             idUser
         );
@@ -99,7 +103,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     @Transactional
     public void deleteNotificationsForUser(Long idUser) {
-        log.info("Entered removeNotificationsForUser in NotificationServiceImpl with idUser {}.", idUser);
+        log.info("Entered deleteNotificationsForUser in NotificationServiceImpl with idUser {}.", idUser);
 
         userRepository
             .existsByIdUser(idUser)
@@ -108,6 +112,20 @@ public class NotificationServiceImpl implements NotificationService {
         notificationRepository.deleteAllByUserIdUser(idUser);
 
         sendInformationAboutNotificationCountChange(idUser);
+    }
+
+    @Override
+    @Transactional
+    public void deleteNotificationById(Long idNotification) {
+        log.info("Entered deleteNotificationById in NotificationServiceImpl with idNotification {}.", idNotification);
+
+        Notification notification = notificationRepository
+            .findById(idNotification)
+            .orElseThrow(() -> new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.NOT_FOUND, NOTIFICATION_DOES_NOT_EXIST));
+
+        notificationRepository.delete(notification);
+
+        sendInformationAboutNotificationCountChange(notification.getUser().getIdUser());
     }
 
     private void sendInformationAboutNotificationCountChange(Long idUser) {

@@ -2,7 +2,7 @@ package hr.pgalina.chain_reaction.domain.features.login.service.implementation;
 
 import hr.pgalina.chain_reaction.domain.entity.User;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.features.login.form.LoginForm;
 import hr.pgalina.chain_reaction.domain.features.login.service.LoginService;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
@@ -18,8 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.INVALID_USERNAME_OR_PASSWORD;
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.INVALID_USERNAME_OR_PASSWORD;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Slf4j
 @Service

@@ -1,4 +1,4 @@
-package hr.pgalina.chain_reaction.domain.exception.contant;
+package hr.pgalina.chain_reaction.domain.exception.constant;
 
 public final class ExceptionMessages {
 
@@ -18,4 +18,6 @@ public final class ExceptionMessages {
     public static final String LOCATION_DOES_NOT_EXIST = "Location doesn't exist.";
 
     public static final String RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS = "Rent for some of the provided timeslots already exists.";
+
+    public static final String NOTIFICATION_DOES_NOT_EXIST = "Notification doesn't exist.";
 }

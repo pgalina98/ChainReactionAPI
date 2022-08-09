@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.features.register.validator.implementation;
 
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
-import hr.pgalina.chain_reaction.domain.exception.contant.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.features.register.form.RegisterForm;
 import hr.pgalina.chain_reaction.domain.features.register.validator.RegisterValidator;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_WITH_PROVIDED_USERNAME_ALREADY_EXISTS;
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.USER_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_WITH_PROVIDED_USERNAME_ALREADY_EXISTS;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Slf4j
 @Component
@@ -25,7 +25,8 @@ public class RegisterValidatorImpl implements RegisterValidator {
         log.info("Entered validateUser in RegisterValidatorImpl.");
 
         boolean usernameAlreadyRegistered = userRepository
-            .existsByUsername(registerForm.getUsername());
+            .existsByUsername(registerForm.getUsername())
+            .get();
 
         if(usernameAlreadyRegistered) {
             throw new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.BAD_REQUEST, USER_WITH_PROVIDED_USERNAME_ALREADY_EXISTS);

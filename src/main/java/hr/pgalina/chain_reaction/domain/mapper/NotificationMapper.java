@@ -13,6 +13,7 @@ public class NotificationMapper {
     public NotificationDto mapToDto(Notification notification) {
         NotificationDto notificationDto = new NotificationDto();
 
+        notificationDto.setIdNotification(notification.getIdNotification());
         notificationDto.setNotificationTitle(notification.getNotificationTitle());
         notificationDto.setNotificationText(notification.getNotificationText());
         notificationDto.setCreatedAt(notification.getCreatedTimestamp());

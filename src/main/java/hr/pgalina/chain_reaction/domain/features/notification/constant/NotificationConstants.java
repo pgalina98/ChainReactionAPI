@@ -4,5 +4,5 @@ public class NotificationConstants {
 
     public final static String RENT_NOTIFICATION = "Rent";
 
-    public final static String RENT_SUCCESSFULLY_CREATED = "Rent successfully created! %s | %s";
+    public final static String RENT_SUCCESSFULLY_CREATED = "Rent for %s %s in %s successfully created! %s | %s-%s";
 }

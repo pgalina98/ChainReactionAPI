@@ -1,6 +1,7 @@
 package hr.pgalina.chain_reaction.domain.util;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtils {
@@ -9,5 +10,11 @@ public class DateTimeUtils {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(format);
 
         return dateFormatter.format(date);
+    }
+
+    public static String formatTime(LocalTime time, String format) {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(format);
+
+        return timeFormatter.format(time);
     }
 }

@@ -41,4 +41,12 @@ public class NotificationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("/{idNotification}")
+    public ResponseEntity<?> removeNotificationById(@PathVariable Long idNotification) {
+        log.info("Entered '/api/notifications/{idNotification}' with notification ID {} [DELETE].", idNotification);
+
+        notificationService.deleteNotificationById(idNotification);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

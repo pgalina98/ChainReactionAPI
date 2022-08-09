@@ -1,4 +1,4 @@
-package hr.pgalina.chain_reaction.domain.exception.contant;
+package hr.pgalina.chain_reaction.domain.exception.constant;
 
 public class ErrorTypeConstants {
 

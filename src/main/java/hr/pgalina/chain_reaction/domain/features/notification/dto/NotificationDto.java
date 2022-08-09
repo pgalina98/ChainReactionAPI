@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Data
 public class NotificationDto implements Serializable {
 
+    private Long idNotification;
+
     private String notificationTitle;
 
     private String notificationText;

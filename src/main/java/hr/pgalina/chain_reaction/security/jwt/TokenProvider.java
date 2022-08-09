@@ -21,8 +21,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.INVALID_JWT_TOKEN;
-import static hr.pgalina.chain_reaction.domain.exception.contant.ExceptionMessages.UNKNOWN_JWT_TOKEN;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.INVALID_JWT_TOKEN;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.UNKNOWN_JWT_TOKEN;
 import static hr.pgalina.chain_reaction.security.jwt.constant.AuthoritiesConstants.ADMIN;
 import static hr.pgalina.chain_reaction.security.jwt.constant.JWTConstants.*;
 
