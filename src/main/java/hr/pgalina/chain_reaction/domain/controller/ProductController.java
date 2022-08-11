@@ -1,6 +1,8 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
 import hr.pgalina.chain_reaction.domain.features.order.dto.ProductDto;
+import hr.pgalina.chain_reaction.domain.features.order.dto.ProductFilter;
+import hr.pgalina.chain_reaction.domain.features.order.dto.ProductPage;
 import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
 import hr.pgalina.chain_reaction.domain.features.order.service.ProductService;
 import hr.pgalina.chain_reaction.domain.features.order.validator.ProductValidator;
@@ -36,5 +38,16 @@ public class ProductController {
         log.info("Entered '/api/products/{idProduct}' with product ID {} [GET].", idProduct);
 
         return new ResponseEntity<>(productService.getProductById(idProduct), HttpStatus.OK);
+    }
+
+    @PostMapping("/filter")
+    public ResponseEntity<ProductPage> fetchProductsByFilter (
+        @RequestParam(required = false, defaultValue = "1") int page,
+        @RequestParam(required = false, defaultValue = "9999") int size,
+        @RequestBody ProductFilter filter
+    ) {
+        log.info("Entered '/api/products' with page {}, size {} and filter [POST].", page, size, filter);
+
+        return new ResponseEntity<>(productService.getProductsByFilter(page, size, filter), HttpStatus.OK);
     }
 }
