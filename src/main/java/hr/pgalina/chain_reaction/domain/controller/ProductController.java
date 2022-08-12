@@ -46,7 +46,7 @@ public class ProductController {
         @RequestParam(required = false, defaultValue = "9999") int size,
         @RequestBody ProductFilter filter
     ) {
-        log.info("Entered '/api/products' with page {}, size {} and filter [POST].", page, size, filter);
+        log.info("Entered '/api/products/filter' with page {}, size {} and filter [POST].", page, size, filter);
 
         return new ResponseEntity<>(productService.getProductsByFilter(page, size, filter), HttpStatus.OK);
     }

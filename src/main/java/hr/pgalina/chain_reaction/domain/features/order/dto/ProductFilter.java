@@ -14,9 +14,9 @@ public class ProductFilter implements Serializable {
 
     private ArrayList<String> brands;
 
-    private ArrayList<String> types;
+    private ArrayList<Short> types;
 
-    private ArrayList<String> colors;
+    private ArrayList<Short> colors;
 
     private Double maxPrize;
 }

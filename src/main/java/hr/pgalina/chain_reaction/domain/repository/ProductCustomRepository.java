@@ -27,6 +27,18 @@ public class ProductCustomRepository {
         PageRequest pageable,
         ProductFilter filter
     ) {
+        BooleanBuilder where = createFilterPredicate(filter);
+
+        Page<Product> productsPage =  productRepository.findAll(where, pageable);
+
+        return ProductPage
+            .builder()
+            .totalElements(productsPage.getTotalElements())
+            .products(productMapper.mapToDtos(productsPage.getContent()))
+            .build();
+    }
+
+    private BooleanBuilder createFilterPredicate(ProductFilter filter) {
         BooleanBuilder where = new BooleanBuilder();
 
         if (Objects.nonNull(filter.getKeyword()) && Strings.isNotBlank(filter.getKeyword())) {
@@ -41,26 +53,21 @@ public class ProductCustomRepository {
         }
 
         if (Objects.nonNull(filter.getTypes()) && filter.getTypes().size() > 0) {
-
+            where
+                .and(product.type.in(filter.getTypes()));
         }
 
         if (Objects.nonNull(filter.getColors()) && filter.getColors().size() > 0) {
-
+            where
+                .and(product.color.in(filter.getColors()));
         }
+        
         if (Objects.nonNull(filter.getMaxPrize())) {
             where
                 .and(product.price.lt(filter.getMaxPrize()))
                 .or(product.price.eq(filter.getMaxPrize()));
         }
 
-        Page<Product> productsPage =  productRepository.findAll(where, pageable);
-
-        return ProductPage
-            .builder()
-            .totalElements(productsPage.getTotalElements())
-            .products(
-                productMapper.mapToDtos(productsPage.getContent())
-            )
-            .build();
+        return where;
     }
 }
