@@ -2,16 +2,19 @@ package hr.pgalina.chain_reaction.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Immutable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
 @Entity
+@Immutable
 @Table(name = "product", schema = "public")
-public class Product extends BaseAuditEntity {
+public class Product extends BaseAuditEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

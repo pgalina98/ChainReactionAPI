@@ -4,6 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import hr.pgalina.chain_reaction.domain.entity.Product;
 import hr.pgalina.chain_reaction.domain.features.order.dto.ProductFilter;
 import hr.pgalina.chain_reaction.domain.features.order.dto.ProductPage;
+import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
 import hr.pgalina.chain_reaction.domain.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
@@ -11,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static hr.pgalina.chain_reaction.domain.entity.QProduct.product;
@@ -25,11 +28,12 @@ public class ProductCustomRepository {
 
     public ProductPage findAllByPageable(
         PageRequest pageable,
+        ArrayList productTypes,
         ProductFilter filter
     ) {
-        BooleanBuilder where = createFilterPredicate(filter);
+        BooleanBuilder where = createFilterPredicate(productTypes, filter);
 
-        Page<Product> productsPage =  productRepository.findAll(where, pageable);
+        Page<Product> productsPage = productRepository.findAll(where, pageable);
 
         return ProductPage
             .builder()
@@ -38,8 +42,11 @@ public class ProductCustomRepository {
             .build();
     }
 
-    private BooleanBuilder createFilterPredicate(ProductFilter filter) {
+    private BooleanBuilder createFilterPredicate(List productTypes, ProductFilter filter) {
         BooleanBuilder where = new BooleanBuilder();
+
+        where
+            .and(product.type.eq(ProductType.E_BIKE.getIdProductType()));
 
         if (Objects.nonNull(filter.getKeyword()) && Strings.isNotBlank(filter.getKeyword())) {
             where
@@ -61,7 +68,7 @@ public class ProductCustomRepository {
             where
                 .and(product.color.in(filter.getColors()));
         }
-        
+
         if (Objects.nonNull(filter.getMaxPrize())) {
             where
                 .and(product.price.lt(filter.getMaxPrize()))

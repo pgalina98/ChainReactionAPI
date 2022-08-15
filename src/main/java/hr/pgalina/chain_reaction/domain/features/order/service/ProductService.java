@@ -5,6 +5,7 @@ import hr.pgalina.chain_reaction.domain.features.order.dto.ProductFilter;
 import hr.pgalina.chain_reaction.domain.features.order.dto.ProductPage;
 import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ProductService {
@@ -13,5 +14,5 @@ public interface ProductService {
 
     ProductDto getProductById(Long idProduct);
 
-    ProductPage getProductsByFilter(Integer page, Integer size, ProductFilter filter);
+    ProductPage getProductsByFilter(Integer page, Integer size, ArrayList productTypes, ProductFilter filter);
 }

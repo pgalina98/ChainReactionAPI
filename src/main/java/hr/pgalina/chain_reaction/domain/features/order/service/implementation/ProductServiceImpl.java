@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.PRODUCT_DOES_NOT_EXIST;
@@ -58,8 +59,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductPage getProductsByFilter(Integer page, Integer size, ProductFilter filter) {
-        log.info("Entered getProductsByFilter in ProductServiceImpl with page {}, size {} and filter {}.", page, size, filter);
+    public ProductPage getProductsByFilter(Integer page, Integer size, ArrayList productTypes, ProductFilter filter) {
+        log.info("Entered getProductsByFilter in ProductServiceImpl with page {}, size {}, productTypes {} and filter {}.", page, size, productTypes, filter);
 
         PageRequest pageable = PageRequest.of(
             page - 1,
@@ -67,6 +68,6 @@ public class ProductServiceImpl implements ProductService {
             Sort.by(Sort.Direction.ASC, PRIMARY_SORT_COLUMN, SECONDARY_SORT_COLUMN)
         );
 
-        return productCustomRepository.findAllByPageable(pageable, filter);
+        return productCustomRepository.findAllByPageable(pageable, productTypes, filter);
     }
 }

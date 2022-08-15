@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -42,12 +43,13 @@ public class ProductController {
 
     @PostMapping("/filter")
     public ResponseEntity<ProductPage> fetchProductsByFilter (
-        @RequestParam(required = false, defaultValue = "1") int page,
-        @RequestParam(required = false, defaultValue = "9999") int size,
+        @RequestParam(required = false, defaultValue = "1") Integer page,
+        @RequestParam(required = false, defaultValue = "9999") Integer size,
+        @RequestParam(required = false) ArrayList productTypes,
         @RequestBody ProductFilter filter
     ) {
-        log.info("Entered '/api/products/filter' with page {}, size {} and filter [POST].", page, size, filter);
+        log.info("Entered '/api/products/filter' with page {}, size {}, productTypes {} and filter {} [POST].", page, size, productTypes, filter);
 
-        return new ResponseEntity<>(productService.getProductsByFilter(page, size, filter), HttpStatus.OK);
+        return new ResponseEntity<>(productService.getProductsByFilter(page, size, productTypes, filter), HttpStatus.OK);
     }
 }

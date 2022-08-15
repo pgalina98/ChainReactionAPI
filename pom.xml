@@ -14,7 +14,8 @@
 	<name>chain-reaction</name>
 	<description>ChainReaction Web Shop</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
+		<querydsl.version>4.1.3</querydsl.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -76,13 +77,24 @@
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
-			<version>4.1.3</version>
+			<version>${querydsl.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
-			<version>4.1.3</version>
+			<version>${querydsl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-core</artifactId>
+			<version>${querydsl.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.code.findbugs</groupId>
+					<artifactId>jsr305</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
