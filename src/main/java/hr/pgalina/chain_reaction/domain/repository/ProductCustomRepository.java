@@ -71,10 +71,10 @@ public class ProductCustomRepository {
                 .and(product.color.in(filter.getColors()));
         }
 
-        if (Objects.nonNull(filter.getMaxPrize())) {
+        if (Objects.nonNull(filter.getMaxPrice())) {
             where
-                .and(product.price.lt(filter.getMaxPrize()))
-                .or(product.price.eq(filter.getMaxPrize()));
+                .and(product.price.lt(filter.getMaxPrice()))
+                .or(product.price.eq(filter.getMaxPrice()));
         }
 
         return where;

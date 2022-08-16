@@ -18,5 +18,5 @@ public class ProductFilter implements Serializable {
 
     private ArrayList<Short> colors;
 
-    private Double maxPrize;
+    private Double maxPrice;
 }
