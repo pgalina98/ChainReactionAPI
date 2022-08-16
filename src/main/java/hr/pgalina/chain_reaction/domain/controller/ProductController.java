@@ -45,7 +45,7 @@ public class ProductController {
     public ResponseEntity<ProductPage> fetchProductsByFilter (
         @RequestParam(required = false, defaultValue = "1") Integer page,
         @RequestParam(required = false, defaultValue = "9999") Integer size,
-        @RequestParam(required = false) ArrayList productTypes,
+        @RequestParam(required = false) ArrayList<Short> productTypes,
         @RequestBody ProductFilter filter
     ) {
         log.info("Entered '/api/products/filter' with page {}, size {}, productTypes {} and filter {} [POST].", page, size, productTypes, filter);

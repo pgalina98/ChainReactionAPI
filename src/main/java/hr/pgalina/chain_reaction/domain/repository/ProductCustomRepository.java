@@ -26,9 +26,11 @@ public class ProductCustomRepository {
 
     private final ProductMapper productMapper;
 
-    public ProductPage findAllByPageable(
+    public ProductPage
+
+    findAllByPageable(
         PageRequest pageable,
-        ArrayList productTypes,
+        ArrayList<Short> productTypes,
         ProductFilter filter
     ) {
         BooleanBuilder where = createFilterPredicate(productTypes, filter);
@@ -42,11 +44,11 @@ public class ProductCustomRepository {
             .build();
     }
 
-    private BooleanBuilder createFilterPredicate(List productTypes, ProductFilter filter) {
+    private BooleanBuilder createFilterPredicate(ArrayList<Short> productTypes, ProductFilter filter) {
         BooleanBuilder where = new BooleanBuilder();
 
         where
-            .and(product.type.eq(ProductType.E_BIKE.getIdProductType()));
+            .and(product.type.in(productTypes));
 
         if (Objects.nonNull(filter.getKeyword()) && Strings.isNotBlank(filter.getKeyword())) {
             where

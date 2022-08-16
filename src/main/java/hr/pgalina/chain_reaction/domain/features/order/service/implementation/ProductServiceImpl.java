@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductPage getProductsByFilter(Integer page, Integer size, ArrayList productTypes, ProductFilter filter) {
+    public ProductPage getProductsByFilter(Integer page, Integer size, ArrayList<Short> productTypes, ProductFilter filter) {
         log.info("Entered getProductsByFilter in ProductServiceImpl with page {}, size {}, productTypes {} and filter {}.", page, size, productTypes, filter);
 
         PageRequest pageable = PageRequest.of(

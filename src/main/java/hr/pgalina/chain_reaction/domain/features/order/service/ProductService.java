@@ -14,5 +14,5 @@ public interface ProductService {
 
     ProductDto getProductById(Long idProduct);
 
-    ProductPage getProductsByFilter(Integer page, Integer size, ArrayList productTypes, ProductFilter filter);
+    ProductPage getProductsByFilter(Integer page, Integer size, ArrayList<Short> productTypes, ProductFilter filter);
 }
