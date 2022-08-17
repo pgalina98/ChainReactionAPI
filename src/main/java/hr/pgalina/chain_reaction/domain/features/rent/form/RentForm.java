@@ -1,8 +1,7 @@
 package hr.pgalina.chain_reaction.domain.features.rent.form;
 
-import hr.pgalina.chain_reaction.domain.features.order.dto.ProductDto;
+import hr.pgalina.chain_reaction.domain.features.product.dto.ProductDto;
 import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
-import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

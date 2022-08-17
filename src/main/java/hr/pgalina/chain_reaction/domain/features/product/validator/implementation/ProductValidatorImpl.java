@@ -1,9 +1,9 @@
-package hr.pgalina.chain_reaction.domain.features.order.validator.implementation;
+package hr.pgalina.chain_reaction.domain.features.product.validator.implementation;
 
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
-import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
-import hr.pgalina.chain_reaction.domain.features.order.validator.ProductValidator;
+import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductType;
+import hr.pgalina.chain_reaction.domain.features.product.validator.ProductValidator;
 import hr.pgalina.chain_reaction.domain.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

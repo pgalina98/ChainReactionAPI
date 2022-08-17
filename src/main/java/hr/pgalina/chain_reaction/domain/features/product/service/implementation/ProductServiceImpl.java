@@ -1,13 +1,13 @@
-package hr.pgalina.chain_reaction.domain.features.order.service.implementation;
+package hr.pgalina.chain_reaction.domain.features.product.service.implementation;
 
 import hr.pgalina.chain_reaction.domain.entity.Product;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
-import hr.pgalina.chain_reaction.domain.features.order.dto.ProductDto;
-import hr.pgalina.chain_reaction.domain.features.order.dto.ProductFilter;
-import hr.pgalina.chain_reaction.domain.features.order.dto.ProductPage;
-import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
-import hr.pgalina.chain_reaction.domain.features.order.service.ProductService;
+import hr.pgalina.chain_reaction.domain.features.product.dto.ProductDto;
+import hr.pgalina.chain_reaction.domain.features.product.dto.ProductFilter;
+import hr.pgalina.chain_reaction.domain.features.product.dto.ProductPage;
+import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductType;
+import hr.pgalina.chain_reaction.domain.features.product.service.ProductService;
 import hr.pgalina.chain_reaction.domain.mapper.ProductMapper;
 import hr.pgalina.chain_reaction.domain.repository.ProductCustomRepository;
 import hr.pgalina.chain_reaction.domain.repository.ProductRepository;

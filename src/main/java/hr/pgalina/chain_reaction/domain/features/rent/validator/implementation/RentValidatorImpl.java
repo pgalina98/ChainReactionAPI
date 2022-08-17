@@ -3,7 +3,7 @@ package hr.pgalina.chain_reaction.domain.features.rent.validator.implementation;
 import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
-import hr.pgalina.chain_reaction.domain.features.order.validator.ProductValidator;
+import hr.pgalina.chain_reaction.domain.features.product.validator.ProductValidator;
 import hr.pgalina.chain_reaction.domain.features.register.validator.RegisterValidator;
 import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
 import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;

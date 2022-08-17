@@ -2,9 +2,8 @@ package hr.pgalina.chain_reaction.domain.repository;
 
 import com.querydsl.core.BooleanBuilder;
 import hr.pgalina.chain_reaction.domain.entity.Product;
-import hr.pgalina.chain_reaction.domain.features.order.dto.ProductFilter;
-import hr.pgalina.chain_reaction.domain.features.order.dto.ProductPage;
-import hr.pgalina.chain_reaction.domain.features.order.enumeration.ProductType;
+import hr.pgalina.chain_reaction.domain.features.product.dto.ProductFilter;
+import hr.pgalina.chain_reaction.domain.features.product.dto.ProductPage;
 import hr.pgalina.chain_reaction.domain.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
@@ -13,7 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import static hr.pgalina.chain_reaction.domain.entity.QProduct.product;
