@@ -26,12 +26,15 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<ProductDto>> fetchProductsByProductType(@RequestParam String productType) {
-        log.info("Entered '/api/products' with product type {} [GET].", productType);
+    public ResponseEntity<List<ProductDto>> fetchProductsByProductTypeAndProductName(
+        @RequestParam String productType,
+        @RequestParam(required = false) String productName
+    ) {
+        log.info("Entered '/api/products' with product type {} and product name {} [GET].", productType, productName);
 
         productValidator.validateProductType(productType);
 
-        return new ResponseEntity<>(productService.getProductsByProductType(ProductType.findByValue(productType)), HttpStatus.OK);
+        return new ResponseEntity<>(productService.getProductsByProductTypeAndProductName(ProductType.findByValue(productType), productName), HttpStatus.OK);
     }
 
     @GetMapping("/{idProduct}")

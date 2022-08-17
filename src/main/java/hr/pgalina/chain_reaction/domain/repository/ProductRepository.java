@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, QuerydslPredicateExecutor<Product> {
 
-    List<Product> findProductsByType(Short productType);
+    List<Product> findProductsByTypeAndName(Short productType, String name);
 
     Optional<Boolean> existsByIdProduct(Long idProduct);
 }

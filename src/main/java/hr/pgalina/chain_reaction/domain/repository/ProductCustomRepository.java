@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static hr.pgalina.chain_reaction.domain.entity.QProduct.product;
@@ -24,9 +25,7 @@ public class ProductCustomRepository {
 
     private final ProductMapper productMapper;
 
-    public ProductPage
-
-    findAllByPageable(
+    public ProductPage findAllByPageable(
         PageRequest pageable,
         ArrayList<Short> productTypes,
         ProductFilter filter
@@ -40,6 +39,20 @@ public class ProductCustomRepository {
             .totalElements(productsPage.getTotalElements())
             .products(productMapper.mapToDtos(productsPage.getContent()))
             .build();
+    }
+
+    public List<Product> findAllByProductTypeAndProductName(Short productType, String productName) {
+        BooleanBuilder where = new BooleanBuilder();
+
+        where
+            .and(product.type.eq(productType));
+
+        if (Objects.nonNull(productName)) {
+            where
+                .and(product.name.likeIgnoreCase(productName));
+        }
+
+        return (List<Product>) productRepository.findAll(where);
     }
 
     private BooleanBuilder createFilterPredicate(ArrayList<Short> productTypes, ProductFilter filter) {

@@ -39,11 +39,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProductDto> getProductsByProductType(ProductType productType) {
-        log.info("Entered getProductsByProductType in ProductServiceImpl with productType {}.", productType.getValue());
+    public List<ProductDto> getProductsByProductTypeAndProductName(ProductType productType, String productName) {
+        log.info("Entered getProductsByProductType in ProductServiceImpl with productType {} and productName {}.", productType.getValue(), productName);
 
         return productMapper
-            .mapToDtos(productRepository.findProductsByType(productType.getIdProductType()));
+            .mapToDtos(productCustomRepository.findAllByProductTypeAndProductName(productType.getIdProductType(), productName));
     }
 
     @Override
