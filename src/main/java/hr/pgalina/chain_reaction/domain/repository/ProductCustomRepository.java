@@ -5,6 +5,7 @@ import hr.pgalina.chain_reaction.domain.entity.Product;
 import hr.pgalina.chain_reaction.domain.features.product.dto.ProductFilter;
 import hr.pgalina.chain_reaction.domain.features.product.dto.ProductPage;
 import hr.pgalina.chain_reaction.domain.mapper.ProductMapper;
+import hr.pgalina.chain_reaction.domain.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.domain.Page;
@@ -47,7 +48,7 @@ public class ProductCustomRepository {
         where
             .and(product.type.eq(productType));
 
-        if (Objects.nonNull(productName)) {
+        if (!StringUtils.isNullOrUndefined(productName)) {
             where
                 .and(product.name.likeIgnoreCase(productName));
         }
