@@ -75,3 +75,17 @@ CREATE TABLE public.notification
     modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
     modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+DROP TABLE IF EXISTS public.discount_code;
+CREATE TABLE public.discount_code
+(
+    id_discount_code BIGSERIAL PRIMARY KEY,
+    code TEXT NOT NULL UNIQUE,
+    discount DOUBLE PRECISION NOT NULL,
+    active_from DATE NOT NULL,
+    active_to DATE NOT NULL,
+    created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);

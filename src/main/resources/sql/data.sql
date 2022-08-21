@@ -17,3 +17,5 @@ INSERT INTO public.product (name, model, price, color, available_quantity, image
 INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Plose Mips', 99.95, 5, 3, '/assets/helmets/alpina/alpina_orange.png', 3);
 INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Plose Mips', 99.95, 6, 3, '/assets/helmets/alpina/alpina_pink.png', 3);
 INSERT INTO public.product (name, model, price, color, available_quantity, image_path, type) VALUES ('Alpina', 'Panoma 2.0', 35.99, 1, 9, '/assets/helmets/alpina/alpina_white.png', 3);
+
+INSERT INTO public.discount_code (code, discount, active_from, active_to) VALUES ('PROMO20', 20, '2022-08-16', '2022-09-30');

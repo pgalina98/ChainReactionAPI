@@ -20,4 +20,7 @@ public final class ExceptionMessages {
     public static final String RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS = "Rent for some of the provided timeslots already exists.";
 
     public static final String NOTIFICATION_DOES_NOT_EXIST = "Notification doesn't exist.";
+
+    public static final String DISCOUNT_CODE_DOES_NOT_EXIST = "Discount code doesn't exist.";
+    public static final String DISCOUNT_CODE_IS_NOT_VALID = "Discount code is not valid.";
 }

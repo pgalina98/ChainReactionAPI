@@ -17,4 +17,10 @@ public class DateTimeUtils {
 
         return timeFormatter.format(time);
     }
+
+    public static boolean isExpired(LocalDate date) {
+        LocalDate now = LocalDate.now();
+
+        return date.isBefore(now);
+    }
 }
