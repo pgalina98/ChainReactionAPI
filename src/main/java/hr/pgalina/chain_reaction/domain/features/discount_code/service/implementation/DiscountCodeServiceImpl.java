@@ -3,7 +3,9 @@ package hr.pgalina.chain_reaction.domain.features.discount_code.service.implemen
 import hr.pgalina.chain_reaction.domain.entity.DiscountCode;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
+import hr.pgalina.chain_reaction.domain.features.discount_code.dto.DiscountCodeDto;
 import hr.pgalina.chain_reaction.domain.features.discount_code.service.DiscountCodeService;
+import hr.pgalina.chain_reaction.domain.mapper.DiscountCodeMapper;
 import hr.pgalina.chain_reaction.domain.repository.DiscountCodeRepository;
 import hr.pgalina.chain_reaction.domain.util.DateTimeUtils;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +21,12 @@ import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessa
 @RequiredArgsConstructor
 public class DiscountCodeServiceImpl implements DiscountCodeService {
 
+    private final DiscountCodeMapper discountCodeMapper;
+
     private final DiscountCodeRepository discountCodeRepository;
 
     @Override
-    public void validateDiscountCode(String code) {
+    public DiscountCodeDto validateDiscountCode(String code) {
         log.info("Entered validateDiscountCode in DiscountCodeServiceImpl with code {}.", code);
 
         DiscountCode discountCode = discountCodeRepository
@@ -32,5 +36,7 @@ public class DiscountCodeServiceImpl implements DiscountCodeService {
         if (DateTimeUtils.isExpired(discountCode.getActiveTo())) {
             throw new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.BAD_REQUEST, DISCOUNT_CODE_IS_NOT_VALID);
         }
+
+        return discountCodeMapper.mapToDto(discountCode);
     }
 }
