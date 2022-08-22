@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.mapper;
 
-import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
-import hr.pgalina.chain_reaction.domain.features.rent.enumeration.Location;
+import hr.pgalina.chain_reaction.domain.feature.rent.dto.LocationDto;
+import hr.pgalina.chain_reaction.domain.feature.rent.enumeration.Location;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

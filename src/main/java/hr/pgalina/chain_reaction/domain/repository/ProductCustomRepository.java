@@ -2,8 +2,8 @@ package hr.pgalina.chain_reaction.domain.repository;
 
 import com.querydsl.core.BooleanBuilder;
 import hr.pgalina.chain_reaction.domain.entity.Product;
-import hr.pgalina.chain_reaction.domain.features.product.dto.ProductFilter;
-import hr.pgalina.chain_reaction.domain.features.product.dto.ProductPage;
+import hr.pgalina.chain_reaction.domain.feature.product.dto.ProductFilter;
+import hr.pgalina.chain_reaction.domain.feature.product.dto.ProductPage;
 import hr.pgalina.chain_reaction.domain.mapper.ProductMapper;
 import hr.pgalina.chain_reaction.domain.util.StringUtils;
 import lombok.RequiredArgsConstructor;

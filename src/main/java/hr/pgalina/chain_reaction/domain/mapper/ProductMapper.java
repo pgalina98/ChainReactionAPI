@@ -1,9 +1,9 @@
 package hr.pgalina.chain_reaction.domain.mapper;
 
 import hr.pgalina.chain_reaction.domain.entity.Product;
-import hr.pgalina.chain_reaction.domain.features.product.dto.ProductDto;
-import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductColor;
-import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductType;
+import hr.pgalina.chain_reaction.domain.feature.product.dto.ProductDto;
+import hr.pgalina.chain_reaction.domain.feature.product.enumeration.ProductColor;
+import hr.pgalina.chain_reaction.domain.feature.product.enumeration.ProductType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

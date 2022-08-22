@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
-import hr.pgalina.chain_reaction.domain.features.discount_code.dto.DiscountCodeDto;
-import hr.pgalina.chain_reaction.domain.features.discount_code.service.DiscountCodeService;
+import hr.pgalina.chain_reaction.domain.feature.discount_code.dto.DiscountCodeDto;
+import hr.pgalina.chain_reaction.domain.feature.discount_code.service.DiscountCodeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

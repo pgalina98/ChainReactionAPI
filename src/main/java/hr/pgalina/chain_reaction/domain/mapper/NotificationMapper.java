@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.mapper;
 
 import hr.pgalina.chain_reaction.domain.entity.Notification;
-import hr.pgalina.chain_reaction.domain.features.notification.dto.NotificationDto;
+import hr.pgalina.chain_reaction.domain.feature.notification.dto.NotificationDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

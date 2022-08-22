@@ -1,8 +1,8 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
-import hr.pgalina.chain_reaction.domain.features.rent.dto.LocationDto;
-import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
-import hr.pgalina.chain_reaction.domain.features.rent.service.RentService;
+import hr.pgalina.chain_reaction.domain.feature.rent.dto.LocationDto;
+import hr.pgalina.chain_reaction.domain.feature.rent.form.RentForm;
+import hr.pgalina.chain_reaction.domain.feature.rent.service.RentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;

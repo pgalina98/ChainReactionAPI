@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
-import hr.pgalina.chain_reaction.domain.features.notification.dto.NotificationDto;
-import hr.pgalina.chain_reaction.domain.features.notification.service.NotificationService;
+import hr.pgalina.chain_reaction.domain.feature.notification.dto.NotificationDto;
+import hr.pgalina.chain_reaction.domain.feature.notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

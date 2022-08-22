@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.mapper;
 
 import hr.pgalina.chain_reaction.domain.entity.User;
-import hr.pgalina.chain_reaction.domain.features.register.form.RegisterForm;
+import hr.pgalina.chain_reaction.domain.feature.register.form.RegisterForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

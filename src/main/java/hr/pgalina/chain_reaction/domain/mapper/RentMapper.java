@@ -3,7 +3,7 @@ package hr.pgalina.chain_reaction.domain.mapper;
 import hr.pgalina.chain_reaction.domain.entity.Rent;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
-import hr.pgalina.chain_reaction.domain.features.rent.form.RentForm;
+import hr.pgalina.chain_reaction.domain.feature.rent.form.RentForm;
 import hr.pgalina.chain_reaction.domain.repository.ProductRepository;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

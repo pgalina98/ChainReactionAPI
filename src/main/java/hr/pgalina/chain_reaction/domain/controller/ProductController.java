@@ -1,11 +1,11 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
-import hr.pgalina.chain_reaction.domain.features.product.dto.ProductDto;
-import hr.pgalina.chain_reaction.domain.features.product.dto.ProductFilter;
-import hr.pgalina.chain_reaction.domain.features.product.dto.ProductPage;
-import hr.pgalina.chain_reaction.domain.features.product.enumeration.ProductType;
-import hr.pgalina.chain_reaction.domain.features.product.service.ProductService;
-import hr.pgalina.chain_reaction.domain.features.product.validator.ProductValidator;
+import hr.pgalina.chain_reaction.domain.feature.product.dto.ProductDto;
+import hr.pgalina.chain_reaction.domain.feature.product.dto.ProductFilter;
+import hr.pgalina.chain_reaction.domain.feature.product.dto.ProductPage;
+import hr.pgalina.chain_reaction.domain.feature.product.enumeration.ProductType;
+import hr.pgalina.chain_reaction.domain.feature.product.service.ProductService;
+import hr.pgalina.chain_reaction.domain.feature.product.validator.ProductValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

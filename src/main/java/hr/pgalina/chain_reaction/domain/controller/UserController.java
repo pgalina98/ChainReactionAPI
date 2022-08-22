@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
-import hr.pgalina.chain_reaction.domain.features.register.form.RegisterForm;
-import hr.pgalina.chain_reaction.domain.features.register.service.RegisterService;
+import hr.pgalina.chain_reaction.domain.feature.register.form.RegisterForm;
+import hr.pgalina.chain_reaction.domain.feature.register.service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

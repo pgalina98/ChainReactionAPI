@@ -1,7 +1,7 @@
 package hr.pgalina.chain_reaction.domain.controller;
 
-import hr.pgalina.chain_reaction.domain.features.login.form.LoginForm;
-import hr.pgalina.chain_reaction.domain.features.login.service.LoginService;
+import hr.pgalina.chain_reaction.domain.feature.login.form.LoginForm;
+import hr.pgalina.chain_reaction.domain.feature.login.service.LoginService;
 import hr.pgalina.chain_reaction.security.jwt.dto.JWTTokenDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
