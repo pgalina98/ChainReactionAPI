@@ -23,4 +23,6 @@ public final class ExceptionMessages {
 
     public static final String DISCOUNT_CODE_DOES_NOT_EXIST = "Discount code doesn't exist.";
     public static final String DISCOUNT_CODE_IS_NOT_VALID = "Discount code is not valid.";
+
+    public static final String PRODUCT_IS_NOT_AVAILABLE_IN_SPECIFIED_QUANTITY = "Product %s is not available in specified quantity.";
 }

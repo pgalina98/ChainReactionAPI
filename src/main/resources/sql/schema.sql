@@ -89,3 +89,37 @@ CREATE TABLE public.discount_code
     modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
     modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+DROP TABLE IF EXISTS public.order;
+CREATE TABLE public.order
+(
+    id_order BIGSERIAL PRIMARY KEY,
+    buyer VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(100) NOT NULL,
+    delivery_type SMALLINT NOT NULL,
+    city VARCHAR(100),
+    address VARCHAR(100),
+    zip_code VARCHAR(100),
+    payment_method SMALLINT NOT NULL,
+    card_number VARCHAR(100),
+    expiration_date VARCHAR(100),
+    cardholder VARCHAR(100),
+    cvv VARCHAR(100),
+    id_discount_code BIGINT
+        CONSTRAINT order_discount_code_id_discount_code_fk
+            REFERENCES public.discount_code,
+    total DOUBLE PRECISION NOT NULL,
+    created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    modified_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
+    modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS public.order_product_map;
+CREATE TABLE public.order_product_map
+(
+    id_order_product_map BIGSERIAL PRIMARY KEY,
+    id_product BIGINT NOT NULL,
+    id_order BIGINT NOT NULL,
+    quantity SMALLINT
+);

@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @Data
 public class DiscountCodeDto implements Serializable {
 
+    private Long idDiscountCode;
+
     private String code;
 
     private Double discount;
