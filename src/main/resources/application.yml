@@ -27,6 +27,8 @@ spring:
     hibernate:
       ddl-auto: validate
       show-sql: true
+    repositories:
+      bootstrap-mode: deferred
   sql:
     init:
       mode: always
