@@ -1,6 +1,8 @@
 package hr.pgalina.chain_reaction.domain.feature.order.service.implementation;
 
+import hr.pgalina.chain_reaction.config.AsyncExecutor;
 import hr.pgalina.chain_reaction.domain.entity.Order;
+import hr.pgalina.chain_reaction.domain.feature.notification.service.NotificationService;
 import hr.pgalina.chain_reaction.domain.feature.order.form.OrderForm;
 import hr.pgalina.chain_reaction.domain.feature.order.service.OrderService;
 import hr.pgalina.chain_reaction.domain.feature.order.validator.OrderValidator;
@@ -20,6 +22,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderValidator orderValidator;
 
     private final ProductService productService;
+    private final NotificationService notificationService;
 
     private final OrderRepository orderRepository;
 
@@ -37,5 +40,7 @@ public class OrderServiceImpl implements OrderService {
         order
             .getProducts()
             .forEach(orderProduct -> productService.updateProductQuantity(orderProduct.getProduct().getIdProduct(), orderProduct.getProduct().getAvailableQuantity() - orderProduct.getQuantity()));
+
+        AsyncExecutor.executeAfterTransactionCommits(() -> notificationService.createNotificationForSuccessfullyCreatedOrder(orderForm.getIdUser(), orderForm.getDeliveryType()));
     }
 }

@@ -17,6 +17,17 @@ public class Order extends BaseAuditEntity {
     @Column(name = "id_order")
     private Long idOrder;
 
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "id_discount_code", referencedColumnName = "id_discount_code")
+    private DiscountCode discountCode;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderProduct> products;
+
     @Column(name = "buyer")
     private String buyer;
 
@@ -49,13 +60,6 @@ public class Order extends BaseAuditEntity {
 
     @Column(name = "cvv")
     private String cvv;
-
-    @ManyToOne
-    @JoinColumn(name = "id_discount_code", referencedColumnName = "id_discount_code")
-    private DiscountCode discountCode;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderProduct> products;
 
     @Column(name = "total")
     private Double total;

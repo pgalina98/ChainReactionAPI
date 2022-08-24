@@ -94,6 +94,12 @@ DROP TABLE IF EXISTS public.order;
 CREATE TABLE public.order
 (
     id_order BIGSERIAL PRIMARY KEY,
+    id_user BIGINT NOT NULL
+        CONSTRAINT order_user_id_user_fk
+            REFERENCES public.user,
+    id_discount_code BIGINT
+        CONSTRAINT order_discount_code_id_discount_code_fk
+            REFERENCES public.discount_code,
     buyer VARCHAR(100) NOT NULL,
     phone_number VARCHAR(100) NOT NULL,
     delivery_type SMALLINT NOT NULL,
@@ -105,9 +111,6 @@ CREATE TABLE public.order
     expiration_date VARCHAR(100),
     cardholder VARCHAR(100),
     cvv VARCHAR(100),
-    id_discount_code BIGINT
-        CONSTRAINT order_discount_code_id_discount_code_fk
-            REFERENCES public.discount_code,
     total DOUBLE PRECISION NOT NULL,
     created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
     created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,

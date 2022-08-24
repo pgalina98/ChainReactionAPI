@@ -9,6 +9,7 @@ import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.feature.notification.constant.NotificationConstants;
 import hr.pgalina.chain_reaction.domain.feature.notification.dto.NotificationDto;
 import hr.pgalina.chain_reaction.domain.feature.notification.service.NotificationService;
+import hr.pgalina.chain_reaction.domain.feature.order.enumeration.DeliveryType;
 import hr.pgalina.chain_reaction.domain.feature.rent.enumeration.Location;
 import hr.pgalina.chain_reaction.domain.mapper.NotificationMapper;
 import hr.pgalina.chain_reaction.domain.repository.NotificationRepository;
@@ -27,12 +28,14 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
 import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.NOTIFICATION_DOES_NOT_EXIST;
+import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
 
 @Slf4j
 @Service
@@ -96,6 +99,23 @@ public class NotificationServiceImpl implements NotificationService {
                 DateTimeUtils.formatDate(productRental.getDate(), DateTimeConstants.APP_LOCAL_DATE_FORMAT),
                 DateTimeUtils.formatTime(productRental.getActiveFrom(), DateTimeConstants.APP_LOCAL_TIME_FORMAT),
                 DateTimeUtils.formatTime(productRental.getActiveTo(), DateTimeConstants.APP_LOCAL_TIME_FORMAT)
+            ),
+            idUser
+        );
+        sendInformationAboutNotificationCountChange(idUser);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void createNotificationForSuccessfullyCreatedOrder(Long idUser, DeliveryType deliveryType) {
+        log.info("Entered createNotificationForSuccessfullyCreatedOrder in NotificationServiceImpl with idUser {} and deliveryType {}.", idUser, deliveryType.getValue());
+
+        createNotification(
+            NotificationConstants.ORDER_NOTIFICATION,
+            String.format(
+                NotificationConstants.ORDER_SUCCESSFULLY_CREATED,
+                DateTimeUtils.formatDateWithLocale(LocalDate.now().plusDays(deliveryType.getMinimumArrivalDays()), DateTimeConstants.APP_LOCAL_DATE_WITH_DAY_AND_MONTH_NAME_FORMAT, Locale.ENGLISH),
+                DateTimeUtils.formatDateWithLocale(LocalDate.now().plusDays(deliveryType.getMaximumArrivalDays()), DateTimeConstants.APP_LOCAL_DATE_WITH_DAY_AND_MONTH_NAME_FORMAT, Locale.ENGLISH)
             ),
             idUser
         );

@@ -19,6 +19,9 @@ public class User extends BaseAuditEntity {
     @Column(name = "id_user")
     private Long idUser;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rent> rents;
+
     @Column(name = "fullname")
     private String fullname;
 
@@ -34,7 +37,4 @@ public class User extends BaseAuditEntity {
     @Column(name = "is_admin")
     @ColumnDefault("false")
     private Boolean isAdmin;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rent> rents = new ArrayList<>();
 }
