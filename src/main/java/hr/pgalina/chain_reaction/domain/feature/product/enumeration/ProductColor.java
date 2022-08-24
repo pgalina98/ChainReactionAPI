@@ -22,8 +22,8 @@ public enum ProductColor {
 
     public static ProductColor findByIdProductColor(Short idProductColor) {
         return Arrays.stream(ProductColor.values())
-                .filter(productColor -> productColor.getIdProductColor().equals(idProductColor))
-                .findFirst()
-                .orElse(null);
+            .filter(productColor -> productColor.getIdProductColor().equals(idProductColor))
+            .findFirst()
+            .orElse(null);
     }
 }

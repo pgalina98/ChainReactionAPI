@@ -10,7 +10,7 @@ public class DiscountCodeMapper {
     public DiscountCodeDto mapToDto(DiscountCode discountCode) {
         DiscountCodeDto discountCodeDto = new DiscountCodeDto();
 
-        discountCode.setIdDiscountCode(discountCode.getIdDiscountCode());
+        discountCodeDto.setIdDiscountCode(discountCode.getIdDiscountCode());
         discountCodeDto.setCode(discountCode.getCode());
         discountCodeDto.setDiscount(discountCode.getDiscount());
         discountCodeDto.setActiveFrom(discountCode.getActiveFrom());

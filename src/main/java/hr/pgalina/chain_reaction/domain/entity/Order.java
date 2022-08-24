@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,7 +24,7 @@ public class Order extends BaseAuditEntity {
     private String phoneNumber;
 
     @Column(name = "delivery_type")
-    private Integer deliveryType;
+    private Short deliveryType;
 
     @Column(name = "city")
     private String city;
@@ -35,7 +36,7 @@ public class Order extends BaseAuditEntity {
     private String zipCode;
 
     @Column(name = "payment_method")
-    private Integer paymentMethod;
+    private Short paymentMethod;
 
     @Column(name = "card_number")
     private String cardNumber;
@@ -49,10 +50,13 @@ public class Order extends BaseAuditEntity {
     @Column(name = "cvv")
     private String cvv;
 
-    @Column(name = "total")
-    private Double total;
-
     @ManyToOne
     @JoinColumn(name = "id_discount_code", referencedColumnName = "id_discount_code")
     private DiscountCode discountCode;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderProduct> products;
+
+    @Column(name = "total")
+    private Double total;
 }

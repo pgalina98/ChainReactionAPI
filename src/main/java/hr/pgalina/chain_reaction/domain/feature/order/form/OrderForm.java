@@ -5,8 +5,8 @@ import hr.pgalina.chain_reaction.domain.feature.cart.dto.CartItemDto;
 import hr.pgalina.chain_reaction.domain.feature.discount_code.dto.DiscountCodeDto;
 import hr.pgalina.chain_reaction.domain.feature.order.dto.AddressDto;
 import hr.pgalina.chain_reaction.domain.feature.order.dto.CreditCardDetailsDto;
-import hr.pgalina.chain_reaction.domain.feature.order.dto.DeliveryTypeDto;
-import hr.pgalina.chain_reaction.domain.feature.order.dto.PaymentMethodDto;
+import hr.pgalina.chain_reaction.domain.feature.order.enumeration.DeliveryType;
+import hr.pgalina.chain_reaction.domain.feature.order.enumeration.PaymentMethod;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -26,13 +26,17 @@ public class OrderForm implements Serializable {
 
     private String phoneNumber;
 
-    private DeliveryTypeDto deliveryType;
+    private DeliveryType deliveryType;
 
     private AddressDto deliveryAddress;
 
-    private PaymentMethodDto paymentMethod;
+    private PaymentMethod paymentMethod;
     
     private CreditCardDetailsDto creditCardDetails;
+
+    private Boolean useDiscountCode;
     
     private DiscountCodeDto discountCode;
+
+    private Double total;
 }

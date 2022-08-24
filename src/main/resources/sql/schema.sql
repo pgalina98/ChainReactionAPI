@@ -76,7 +76,7 @@ CREATE TABLE public.notification
     modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS public.discount_code;
+DROP TABLE IF EXISTS public.discount_code CASCADE;
 CREATE TABLE public.discount_code
 (
     id_discount_code BIGSERIAL PRIMARY KEY,
@@ -115,10 +115,10 @@ CREATE TABLE public.order
     modified_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS public.order_product_map;
-CREATE TABLE public.order_product_map
+DROP TABLE IF EXISTS public.order_product;
+CREATE TABLE public.order_product
 (
-    id_order_product_map BIGSERIAL PRIMARY KEY,
+    id_order_product BIGSERIAL PRIMARY KEY,
     id_product BIGINT NOT NULL,
     id_order BIGINT NOT NULL,
     quantity SMALLINT

@@ -10,5 +10,5 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public class CartItemDto extends ProductDto implements Serializable {
 
-    private Integer quantity;
+    private Short quantity;
 }

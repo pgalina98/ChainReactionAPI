@@ -25,8 +25,8 @@ public enum Location {
 
     public static Location findByIdLocation(Short idLocation) {
         return Arrays.stream(Location.values())
-                .filter(location -> location.getIdLocation().equals(idLocation))
-                .findFirst()
-                .orElse(null);
+            .filter(location -> location.getIdLocation().equals(idLocation))
+            .findFirst()
+            .orElse(null);
     }
 }

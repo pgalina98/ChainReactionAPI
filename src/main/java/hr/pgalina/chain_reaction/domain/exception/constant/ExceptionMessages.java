@@ -17,6 +17,10 @@ public final class ExceptionMessages {
 
     public static final String LOCATION_DOES_NOT_EXIST = "Location doesn't exist.";
 
+    public static final String DELIVERY_TYPE_DOES_NOT_EXIST = "Delivery type doesn't exist.";
+
+    public static final String PAYMENT_METHOD_DOES_NOT_EXIST = "Payment method doesn't exist.";
+
     public static final String RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS = "Rent for some of the provided timeslots already exists.";
 
     public static final String NOTIFICATION_DOES_NOT_EXIST = "Notification doesn't exist.";
@@ -24,5 +28,5 @@ public final class ExceptionMessages {
     public static final String DISCOUNT_CODE_DOES_NOT_EXIST = "Discount code doesn't exist.";
     public static final String DISCOUNT_CODE_IS_NOT_VALID = "Discount code is not valid.";
 
-    public static final String PRODUCT_IS_NOT_AVAILABLE_IN_SPECIFIED_QUANTITY = "Product %s is not available in specified quantity.";
+    public static final String PRODUCT_IS_NOT_AVAILABLE_IN_SPECIFIED_QUANTITY = "Product %s %s is not available in specified quantity.";
 }

@@ -32,9 +32,9 @@ public enum Workday {
         String currentDayName = new SimpleDateFormat("EEEE", Locale.ENGLISH).format(new Date());
 
         return Arrays.stream(Workday.values())
-                .filter(workday -> workday.getDayName().equals(currentDayName))
-                .findFirst()
-                .orElse(null);
+            .filter(workday -> workday.getDayName().equals(currentDayName))
+            .findFirst()
+            .orElse(null);
     }
 
     public static Workday findByDate(LocalDate date) {
@@ -46,8 +46,8 @@ public enum Workday {
             );
 
         return Arrays.stream(Workday.values())
-                .filter(workday -> workday.getDayName().equals(dayName))
-                .findFirst()
-                .orElse(null);
+            .filter(workday -> workday.getDayName().equals(dayName))
+            .findFirst()
+            .orElse(null);
     }
 }

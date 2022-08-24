@@ -16,6 +16,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>, Queryds
 
     Optional<Boolean> existsByIdProduct(Long idProduct);
 
-    @Query(value = "SELECT (count(product.*) > 0) FROM Product product WHERE product.idProduct =:idProduct AND product.availableQuantity >=:quantity", nativeQuery = true)
-    boolean isQuantityOfProductAvailable(Long idProduct, Integer quantity);
+    @Query(value = "SELECT (count(product.*) > 0) FROM Product product WHERE product.id_product =:idProduct AND product.available_quantity >=:quantity", nativeQuery = true)
+    boolean isProductQuantityAvailable(Long idProduct, Short quantity);
 }
