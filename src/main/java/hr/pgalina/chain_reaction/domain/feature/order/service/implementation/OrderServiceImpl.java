@@ -1,8 +1,10 @@
 package hr.pgalina.chain_reaction.domain.feature.order.service.implementation;
 
+import hr.pgalina.chain_reaction.domain.entity.Order;
 import hr.pgalina.chain_reaction.domain.feature.order.form.OrderForm;
 import hr.pgalina.chain_reaction.domain.feature.order.service.OrderService;
 import hr.pgalina.chain_reaction.domain.feature.order.validator.OrderValidator;
+import hr.pgalina.chain_reaction.domain.feature.product.service.ProductService;
 import hr.pgalina.chain_reaction.domain.mapper.OrderMapper;
 import hr.pgalina.chain_reaction.domain.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,8 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderValidator orderValidator;
 
+    private final ProductService productService;
+
     private final OrderRepository orderRepository;
 
     private final OrderMapper orderMapper;
@@ -28,6 +32,10 @@ public class OrderServiceImpl implements OrderService {
 
         orderValidator.validateOrderForm(orderForm);
 
-        orderRepository.save(orderMapper.mapToEntity(orderForm));
+        Order order = orderRepository.saveAndFlush(orderMapper.mapToEntity(orderForm));
+
+        order
+            .getProducts()
+            .forEach(orderProduct -> productService.updateProductQuantity(orderProduct.getProduct().getIdProduct(), orderProduct.getProduct().getAvailableQuantity() - orderProduct.getQuantity()));
     }
 }

@@ -49,7 +49,7 @@ public class Product extends BaseAuditEntity implements Serializable {
     private Short color;
 
     @Column(name = "available_quantity")
-    private Integer availableQuantity;
+    private Short availableQuantity;
 
     @Column(name = "for_rent")
     private Boolean forRent;

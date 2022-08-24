@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -70,5 +71,17 @@ public class ProductServiceImpl implements ProductService {
         );
 
         return productCustomRepository.findAllByPageable(pageable, productTypes, filter);
+    }
+
+    @Override
+    @Transactional
+    public void updateProductQuantity(Long idProduct, Integer availableQuantity) {
+        log.info("Entered updateProductQuantity in ProductServiceImpl with idProduct {} and availableQuantity {}.", idProduct, availableQuantity);
+
+        productRepository
+            .findById(idProduct)
+                .orElseThrow(() -> new BadRequestException(ErrorTypeConstants.ERROR, HttpStatus.NOT_FOUND, PRODUCT_DOES_NOT_EXIST));
+
+        productRepository.updateQuantityOfProduct(idProduct, availableQuantity);
     }
 }

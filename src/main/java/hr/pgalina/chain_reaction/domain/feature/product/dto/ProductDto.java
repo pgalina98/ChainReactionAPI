@@ -29,7 +29,7 @@ public class ProductDto implements Serializable {
 
     private ProductColorDto color;
 
-    private Integer availableQuantity;
+    private Short availableQuantity;
 
     private Boolean forRent;
 
