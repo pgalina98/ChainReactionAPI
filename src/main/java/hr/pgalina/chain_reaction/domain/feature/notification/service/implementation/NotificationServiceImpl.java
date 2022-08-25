@@ -29,10 +29,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.NOTIFICATION_DOES_NOT_EXIST;
 import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessages.USER_DOES_NOT_EXIST;
@@ -67,7 +65,11 @@ public class NotificationServiceImpl implements NotificationService {
 
         List<Notification> notificationsForUser = notificationRepository.findNotificationsByUserIdUser(idUser);
 
-        return notificationMapper.mapToDtos(notificationsForUser);
+        return notificationMapper
+            .mapToDtos(notificationsForUser)
+            .stream()
+            .sorted(Comparator.comparing(NotificationDto::getCreatedAt).reversed())
+            .collect(Collectors.toList());
     }
 
     @Override
