@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private static final String PRIMARY_SORT_COLUMN = "createdAt";
+    private static final String PRIMARY_SORT_COLUMN = "createdTimestamp";
 
     private final OrderValidator orderValidator;
 
