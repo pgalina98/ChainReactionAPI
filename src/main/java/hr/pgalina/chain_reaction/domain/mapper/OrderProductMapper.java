@@ -6,6 +6,7 @@ import hr.pgalina.chain_reaction.domain.entity.Product;
 import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.feature.cart.dto.CartItemDto;
+import hr.pgalina.chain_reaction.domain.feature.order.dto.OrderProductDto;
 import hr.pgalina.chain_reaction.domain.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,8 @@ import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessa
 public class OrderProductMapper {
 
     private final ProductRepository productRepository;
+
+    private final ProductMapper productMapper;
 
     public OrderProduct mapToEntity(CartItemDto cartItemDto, Order order) {
         OrderProduct orderProduct = new OrderProduct();
@@ -40,6 +43,22 @@ public class OrderProductMapper {
         return cartItems
             .stream()
             .map((cartItemDto) -> mapToEntity(cartItemDto, order))
+            .collect(Collectors.toList());
+    }
+
+    public OrderProductDto mapToDto(OrderProduct orderProduct) {
+        OrderProductDto orderProductDto = new OrderProductDto();
+
+        orderProductDto.setProduct(productMapper.mapToDto(orderProduct.getProduct()));
+        orderProduct.setQuantity(orderProduct.getQuantity());
+
+        return orderProductDto;
+    }
+
+    public List<OrderProductDto> mapToDtos(List<OrderProduct> orderProducts) {
+        return orderProducts
+            .stream()
+            .map((orderProduct) -> mapToDto(orderProduct))
             .collect(Collectors.toList());
     }
 }
