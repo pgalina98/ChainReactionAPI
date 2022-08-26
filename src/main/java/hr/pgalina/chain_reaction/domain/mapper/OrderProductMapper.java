@@ -50,7 +50,7 @@ public class OrderProductMapper {
         OrderProductDto orderProductDto = new OrderProductDto();
 
         orderProductDto.setProduct(productMapper.mapToDto(orderProduct.getProduct()));
-        orderProduct.setQuantity(orderProduct.getQuantity());
+        orderProductDto.setQuantity(orderProduct.getQuantity());
 
         return orderProductDto;
     }
