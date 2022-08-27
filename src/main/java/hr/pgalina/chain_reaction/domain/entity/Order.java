@@ -25,7 +25,7 @@ public class Order extends BaseAuditEntity {
     @JoinColumn(name = "id_discount_code", referencedColumnName = "id_discount_code")
     private DiscountCode discountCode;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderProduct> products;
 
     @Column(name = "buyer")
