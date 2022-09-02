@@ -61,6 +61,9 @@ public class Order extends BaseAuditEntity {
     @Column(name = "cvv")
     private String cvv;
 
+    @Column(name = "status")
+    private Short status;
+
     @Column(name = "total")
     private Double total;
 }

@@ -21,6 +21,8 @@ public final class ExceptionMessages {
 
     public static final String PAYMENT_METHOD_DOES_NOT_EXIST = "Payment method doesn't exist.";
 
+    public static final String ORDER_STATUS_DOES_NOT_EXIST = "Order status doesn't exist.";
+
     public static final String RENT_FOR_SOME_OF_TIMESLOTS_ALREADY_EXISTS = "Rent for some of the provided timeslots already exists.";
 
     public static final String NOTIFICATION_DOES_NOT_EXIST = "Notification doesn't exist.";

@@ -111,6 +111,7 @@ CREATE TABLE public.order
     expiration_date VARCHAR(100),
     cardholder VARCHAR(100),
     cvv VARCHAR(100),
+    status SMALLINT NOT NULL DEFAULT 1,
     total DOUBLE PRECISION NOT NULL,
     created_by VARCHAR(100) DEFAULT CURRENT_USER NOT NULL,
     created_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,

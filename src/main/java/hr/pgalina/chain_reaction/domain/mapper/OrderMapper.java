@@ -8,6 +8,7 @@ import hr.pgalina.chain_reaction.domain.exception.BadRequestException;
 import hr.pgalina.chain_reaction.domain.exception.constant.ErrorTypeConstants;
 import hr.pgalina.chain_reaction.domain.feature.order.dto.OrderDto;
 import hr.pgalina.chain_reaction.domain.feature.order.enumeration.DeliveryType;
+import hr.pgalina.chain_reaction.domain.feature.order.enumeration.OrderStatus;
 import hr.pgalina.chain_reaction.domain.feature.order.form.OrderForm;
 import hr.pgalina.chain_reaction.domain.repository.DiscountCodeRepository;
 import hr.pgalina.chain_reaction.domain.repository.UserRepository;
@@ -35,6 +36,7 @@ public class OrderMapper {
     private final OrderProductMapper orderProductMapper;
     private final DeliveryTypeMapper deliveryTypeMapper;
     private final AddressMapper addressMapper;
+    private final OrderStatusMapper orderStatusMapper;
 
     public Order mapToEntity(OrderForm orderForm) {
         Order order = new Order();
@@ -65,6 +67,7 @@ public class OrderMapper {
         }
 
         order.setProducts(orderProductMapper.mapToEntities(orderForm.getProducts(), order));
+        order.setStatus(orderForm.getStatus().getIdOrderStatus());
         order.setTotal(orderForm.getTotal());
 
         return order;
@@ -84,6 +87,7 @@ public class OrderMapper {
             )
         );
         orderDto.setAddress(addressMapper.mapToDto(order.getCity(), order.getAddress(), order.getZipCode()));
+        orderDto.setStatus(orderStatusMapper.mapToDto(OrderStatus.findByIdOrderStatus(order.getStatus())));
         orderDto.setTotal(order.getTotal());
 
         return orderDto;

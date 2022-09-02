@@ -20,5 +20,7 @@ public class OrderDto implements Serializable {
 
     private AddressDto address;
 
+    private OrderStatusDto status;
+
     private Double total;
 }

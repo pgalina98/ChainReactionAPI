@@ -6,6 +6,7 @@ import hr.pgalina.chain_reaction.domain.feature.discount_code.dto.DiscountCodeDt
 import hr.pgalina.chain_reaction.domain.feature.order.dto.AddressDto;
 import hr.pgalina.chain_reaction.domain.feature.order.dto.CreditCardDetailsDto;
 import hr.pgalina.chain_reaction.domain.feature.order.enumeration.DeliveryType;
+import hr.pgalina.chain_reaction.domain.feature.order.enumeration.OrderStatus;
 import hr.pgalina.chain_reaction.domain.feature.order.enumeration.PaymentMethod;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,8 @@ public class OrderForm implements Serializable {
     private Boolean useDiscountCode;
     
     private DiscountCodeDto discountCode;
+
+    private OrderStatus status;
 
     private Double total;
 }
