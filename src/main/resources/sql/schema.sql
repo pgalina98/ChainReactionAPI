@@ -123,7 +123,11 @@ DROP TABLE IF EXISTS public.order_product;
 CREATE TABLE public.order_product
 (
     id_order_product BIGSERIAL PRIMARY KEY,
-    id_product BIGINT NOT NULL,
-    id_order BIGINT NOT NULL,
+    id_product BIGINT
+        CONSTRAINT order_product_product_id_product_fk
+            REFERENCES public.product,
+    id_order BIGINT
+        CONSTRAINT order_product_order_id_order_fk
+            REFERENCES public.order,
     quantity SMALLINT
 );
