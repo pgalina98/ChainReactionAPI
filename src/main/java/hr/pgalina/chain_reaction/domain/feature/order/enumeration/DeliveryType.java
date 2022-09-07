@@ -19,8 +19,8 @@ import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessa
 public enum DeliveryType {
 
     STORE((short) 1, "STORE", (short) 6, (short) 15),
-    DHL_DELIVERY((short) 2, "DHL_DELIVERY", (short) 20, (short) 26),
-    FED_EX_DELIVERY((short) 3, "FED_EX_DELIVERY", (short) 7, (short) 11);
+    DHL_DELIVERY((short) 2, "DHL DELIVERY", (short) 20, (short) 26),
+    FED_EX_DELIVERY((short) 3, "FEDEX DELIVERY", (short) 7, (short) 11);
 
     private final Short idDeliveryType;
     private final String value;

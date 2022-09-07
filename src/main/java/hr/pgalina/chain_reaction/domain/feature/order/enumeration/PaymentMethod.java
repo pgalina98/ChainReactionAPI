@@ -16,9 +16,9 @@ import static hr.pgalina.chain_reaction.domain.exception.constant.ExceptionMessa
 public enum PaymentMethod {
 
     CASH((short) 1, "CASH"),
-    CREDIT_CART((short) 2, "CREDIT_CART"),
-    PAY_PAL((short) 3, "PAY_PAL"),
-    APPLE_PAY((short) 4, "APPLE_PAY");
+    CREDIT_CART((short) 2, "CREDIT CART"),
+    PAY_PAL((short) 3, "PAY PAL"),
+    APPLE_PAY((short) 4, "APPLE PAY");
 
     private final Short idPaymentMethod;
     private final String value;
